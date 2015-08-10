@@ -21,24 +21,48 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="556"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqC-j3-TOb">
-                                <rect key="frame" x="184" y="686" width="44" height="30"/>
-                                <state key="normal" title="Album">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="imagePickerButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4y0-3z-4YX"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq">
+                                <rect key="frame" x="0.0" y="684" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.91425978539999997" green="0.91397795540000004" blue="0.81151411019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JjM-L7-Zlr"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" systemItem="camera" id="AJG-Mf-hWu"/>
+                                    <barButtonItem style="plain" id="tvI-Y2-l5d">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UqC-j3-TOb">
+                                            <rect key="frame" x="172" y="626" width="44" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Album">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="imagePickerButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4y0-3z-4YX"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VgV-eP-yIO">
+                                <rect key="frame" x="0.0" y="40" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.91425978539999997" green="0.91397795540000004" blue="0.81151411019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PA5-JZ-NvK"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="action" id="ub9-KT-owR"/>
+                                    <barButtonItem style="plain" systemItem="cancel" id="Z9x-nN-669"/>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.91425978535353536" green="0.91397795539570659" blue="0.81151411018849318" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="0FV-8r-lYQ" secondAttribute="trailing" constant="-16" id="6nD-4s-2tT"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="UqC-j3-TOb" secondAttribute="bottom" constant="20" id="A1V-0b-2I3"/>
-                            <constraint firstAttribute="centerX" secondItem="UqC-j3-TOb" secondAttribute="centerX" constant="1" id="Kg4-D6-SpM"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="0FV-8r-lYQ" secondAttribute="bottom" constant="80" id="WP8-Zl-zj7"/>
+                            <constraint firstItem="VgV-eP-yIO" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="bdz-Ob-xEM"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="gv4-vy-Vys"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="lNQ-x5-oPF"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6zK-cg-Sfq" secondAttribute="bottom" constant="8" id="n1L-vJ-U5N"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
