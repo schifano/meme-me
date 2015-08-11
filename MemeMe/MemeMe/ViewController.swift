@@ -75,7 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject: AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // Set the picked image in the UIImageView
-            imageView.contentMode = .ScaleToFill
+            imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
         }
         dismissViewControllerAnimated(true, completion: nil)
