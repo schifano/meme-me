@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeViewController.swift
 //  MemeMe
 //
 //  Created by Rachel Schifano on 8/10/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Text Fields
     @IBOutlet weak var topTextField: UITextField!
@@ -40,6 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeColorAttributeName: UIColor.blackColor(),
             NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
+            // Use negative value to allow stroke AND fill
             NSStrokeWidthAttributeName: "-3.0"
         ]
         topTextField.defaultTextAttributes = textAttributes
