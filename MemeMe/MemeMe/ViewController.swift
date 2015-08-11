@@ -58,7 +58,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 
             println("Camera is not available") // TEST
         }
-        // Do I need to dismissViewController here?
+        // Do I need to dismissViewController here? Maybe
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject: AnyObject]) {
