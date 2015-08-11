@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
-                                <rect key="frame" x="0.0" y="65" width="419" height="626"/>
+                                <rect key="frame" x="0.0" y="65" width="414" height="626"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
@@ -70,7 +70,7 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6zK-cg-Sfq" secondAttribute="bottom" id="Eaq-9u-0k6"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="FYj-4b-CEA"/>
                             <constraint firstItem="VgV-eP-yIO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="16" id="Onn-Lb-C6n"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0FV-8r-lYQ" secondAttribute="trailing" constant="-21" id="Wf0-bR-rZC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0FV-8r-lYQ" secondAttribute="trailing" constant="-16" id="Wf0-bR-rZC"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="top" secondItem="0FV-8r-lYQ" secondAttribute="bottom" id="bO7-6x-NHc"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="oig-cu-CEk"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="top" secondItem="VgV-eP-yIO" secondAttribute="bottom" id="pr5-hF-jhd"/>
