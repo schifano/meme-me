@@ -28,7 +28,11 @@
                                     <constraint firstAttribute="height" constant="44" id="JjM-L7-Zlr"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" systemItem="camera" id="AJG-Mf-hWu"/>
+                                    <barButtonItem title="Item" systemItem="camera" id="AJG-Mf-hWu">
+                                        <connections>
+                                            <action selector="imagePickerCameraButtonTapped:" destination="vXZ-lx-hvc" id="TFE-VX-nzN"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" id="tvI-Y2-l5d">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UqC-j3-TOb">
                                             <rect key="frame" x="172" y="626" width="44" height="30"/>
@@ -37,7 +41,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="imagePickerButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4y0-3z-4YX"/>
+                                                <action selector="imagePickerAlbumButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vJu-ij-BvV"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>

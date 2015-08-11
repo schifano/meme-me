@@ -19,11 +19,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
     }
 
-    @IBAction func imagePickerButtonTapped(sender: UIButton) {
+    @IBAction func imagePickerAlbumButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         // Present the image picker VC
         presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func imagePickerCameraButtonTapped(sender: AnyObject) {
+        imagePicker.allowsEditing = false
+        
+        // Check if the device camera is available
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+
+            if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front)  {
+                imagePicker.sourceType = .Camera
+                imagePicker.cameraDevice = .Front
+            
+                println("Front camera is available") // TEST
+                
+                presentViewController(imagePicker, animated: true, completion: nil)
+
+            } else {
+                // Rear camera available
+                imagePicker.sourceType = .Camera
+                imagePicker.cameraDevice = .Rear
+                
+                println("Rear camera is available") // TEST
+                
+                presentViewController(imagePicker, animated: true, completion: nil)
+            }
+            
+        } else {
+            // Alert View deprecated in iOS 8, use Alert Controller
+            let alert = UIAlertController(title: "No camera found", message: "Did not find a camera on your current device", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction!) in println("Foo")}))
+            presentViewController(alert, animated: true, completion: nil)
+                
+            println("Camera is not available") // TEST
+        }
+        // Do I need to dismissViewController here?
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject: AnyObject]) {
@@ -34,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
