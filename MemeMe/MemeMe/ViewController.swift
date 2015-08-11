@@ -10,10 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // Text Fields
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     let imagePicker = UIImagePickerController()
+    
+    // Text Field Delegate Objects
+    let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     override func viewWillAppear(animated: Bool) {
         // If a camera is not available, disable the camera button.
@@ -24,6 +31,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Sets the delegate of the current UIImagePickerController object to the view controller this is written in.
         imagePicker.delegate = self
+        topTextField.delegate = memeTextFieldDelegate
+        bottomTextField.delegate = memeTextFieldDelegate
     }
 
     /**

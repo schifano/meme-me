@@ -21,6 +21,26 @@
                                 <rect key="frame" x="0.0" y="65" width="414" height="626"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
+                                <rect key="frame" x="36" y="145" width="342" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-LF-BUq">
+                                <rect key="frame" x="36" y="561" width="342" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cXq-Cc-uqP"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="691" width="414" height="45"/>
                                 <color key="backgroundColor" red="0.88393702649999994" green="0.87149573030000005" blue="0.82366507079999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,7 +49,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wey-Tj-hzJ"/>
-                                    <barButtonItem title="Item" systemItem="camera" id="AJG-Mf-hWu">
+                                    <barButtonItem systemItem="camera" id="AJG-Mf-hWu">
                                         <connections>
                                             <action selector="imagePickerCameraButtonTapped:" destination="vXZ-lx-hvc" id="TFE-VX-nzN"/>
                                         </connections>
@@ -71,7 +91,13 @@
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="FYj-4b-CEA"/>
                             <constraint firstItem="VgV-eP-yIO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="16" id="Onn-Lb-C6n"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0FV-8r-lYQ" secondAttribute="trailing" constant="-16" id="Wf0-bR-rZC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B7P-Ru-2t4" secondAttribute="trailing" constant="20" id="XBq-hR-NDr"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="top" secondItem="0FV-8r-lYQ" secondAttribute="bottom" id="bO7-6x-NHc"/>
+                            <constraint firstItem="B7P-Ru-2t4" firstAttribute="top" secondItem="VgV-eP-yIO" secondAttribute="bottom" constant="80" id="cBN-pz-lnl"/>
+                            <constraint firstItem="B7P-Ru-2t4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="d7g-ZN-FEC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Eb-LF-BUq" secondAttribute="trailing" constant="20" id="e5S-NC-l5L"/>
+                            <constraint firstItem="6zK-cg-Sfq" firstAttribute="top" secondItem="9Eb-LF-BUq" secondAttribute="bottom" constant="80" id="evN-PV-ZDw"/>
+                            <constraint firstItem="9Eb-LF-BUq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="kEO-sB-1FK"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="oig-cu-CEk"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="top" secondItem="VgV-eP-yIO" secondAttribute="bottom" id="pr5-hF-jhd"/>
                             <constraint firstItem="VgV-eP-yIO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qbW-7Z-7pK"/>
@@ -79,8 +105,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
+                        <outlet property="topTextField" destination="B7P-Ru-2t4" id="Iu8-Ha-7mr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
