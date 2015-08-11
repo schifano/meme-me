@@ -22,9 +22,21 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // Text Field Delegate Objects
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
+    // FIXME: Order of view life cycle
     override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
+        // Subscribe
+        self.subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unsubscribe
+        self.unsubscribeToKeyboardNotifications()
     }
     
     override func viewDidLoad() {
@@ -119,5 +131,63 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: Notification Center Methods
+    /**
+        Keyboard will show when bottomTextField is the first responder. 
+        Method adjusts the current view frame based on the y coordinate by subtracting
+        the height of the keyboard. This ensures that they keyboard will not cover 
+        the current text field.
+    
+        :param: notification The NSNotification
+    */
+    func keyboardWillShow(notification: NSNotification) {
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    
+    /**
+        Keyboard will hide when bottomTextField is the first responder.
+        Method adjusts the current view frame based on the y coordinate by adding
+        the height of the keyboard. This ensures that the view does not remain
+        displaced on the screen when the keyboard hides.
+    
+        :param: notification The NSNotification
+    */
+    func keyboardWillHide(notification: NSNotification) {
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
+    }
+    
+    /**
+        Returns the keyboard height.
+    
+        :param: notification The NSNotification
+    */
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
+    
+    /**
+        Subscribes to keyboard notifications.
+    */
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    /**
+        Unsubscribes to keyboard notifications.
+    */
+    func unsubscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 }
