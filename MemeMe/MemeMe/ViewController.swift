@@ -31,8 +31,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Sets the delegate of the current UIImagePickerController object to the view controller this is written in.
         imagePicker.delegate = self
+        
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
+        
+        // Create dictionary of default attributes
+        let textAttributes = [
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSStrokeWidthAttributeName: "-3.0"
+        ]
+        topTextField.defaultTextAttributes = textAttributes
+        bottomTextField.defaultTextAttributes = textAttributes
+        
+        // TODO: Can we center using a defaultTextAttribute?
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
     }
 
     /**
