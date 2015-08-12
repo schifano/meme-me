@@ -85,7 +85,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // Check if the device camera is available
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-
             if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front)  {
                 imagePicker.sourceType = .Camera
                 imagePicker.cameraDevice = .Front
