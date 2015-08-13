@@ -68,6 +68,9 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b49-WP-fHM">
+                                <rect key="frame" x="115" y="256" width="240" height="258"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -87,7 +90,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KP8-aH-kk0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="bUg-ga-HtW"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="bUg-ga-HtW">
+                            <connections>
+                                <action selector="save" destination="vXZ-lx-hvc" id="uFt-Ea-Ngk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -96,6 +103,7 @@
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
                         <outlet property="shareButton" destination="bUg-ga-HtW" id="CbS-qd-g3Q"/>
+                        <outlet property="testImageView" destination="b49-WP-fHM" id="Cv6-cD-MFa"/>
                         <outlet property="topTextField" destination="B7P-Ru-2t4" id="Iu8-Ha-7mr"/>
                     </connections>
                 </viewController>

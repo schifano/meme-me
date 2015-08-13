@@ -10,6 +10,7 @@ import UIKit
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var testImageView: UIImageView!
     // Text Fields
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -192,9 +193,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     // MARK: Meme Object
-    func save() {
+    @IBAction func save() {
+        
+        var memedImage = generateMemedImage()
         // Create meme
-        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
     }
     
     func generateMemedImage() -> UIImage {
@@ -207,6 +210,17 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UIGraphicsEndImageContext()
         
         // Show tool bar and nav bar
+        
+        testImageView.image = memedImage
+        
+        // MARK: Memed Image TEST
+        // Add popup to show image that is being created
+//        let alert = UIAlertController(title: "Image", message: "lol", preferredStyle: .Alert)
+//        var action = UIAlertAction(title: "title", style: .Default, handler: nil)
+//        action.setValue(memedImage, forKey: "image")
+//        alert.addAction(action)
+//        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction!) in println("Foo")}))
+//        presentViewController(alert, animated: true, completion: nil)
         
         return memedImage
     }
