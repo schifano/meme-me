@@ -9,7 +9,6 @@
 import UIKit
 
 // TODO: completionItemsHandler?
-// TODO: Udacity Assets?
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -189,7 +188,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    // MARK: Meme Generating and Sharings
+    // MARK: Meme Generating and Sharing
     /**
         Save a generated meme object.
     */
