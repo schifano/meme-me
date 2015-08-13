@@ -241,5 +241,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         // Present View Controller
         self.presentViewController(activityController, animated: true, completion: nil)
+        // Save the meme
+        self.save()
+        
+        // TODO: What is the point of this even anyway
+        activityController.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+        }
+        // Dismiss View Controller
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
