@@ -9,9 +9,19 @@
 import UIKit
 import Foundation
 
-struct Meme {
-    var topText: String
-    var bottomText: String
-    var originalImage: UIImage
-    var memedImage: UIImage
+class Meme {
+    var topText: String!
+    var bottomText: String!
+    var originalImage: UIImage!
+    var memedImage: UIImage!
+    
+    /**
+        Initializer for a new Meme object.
+    */
+    init(topText: String, bottomText: String, originalImage: UIImage, memedImage: UIImage) {
+        self.topText = topText
+        self.bottomText = bottomText
+        self.originalImage = originalImage
+        self.memedImage = memedImage
+    }
 }
