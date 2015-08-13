@@ -17,6 +17,11 @@ class Meme {
     
     /**
         Initializer for a new Meme object.
+    
+        :param: topText The top text field
+        :param: bottomText The bottom text field
+        :param: originalImage The image picked by the user
+        :param: memedImage The final meme image including text and original image
     */
     init(topText: String, bottomText: String, originalImage: UIImage, memedImage: UIImage) {
         self.topText = topText
