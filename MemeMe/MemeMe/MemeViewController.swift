@@ -16,6 +16,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     let imagePicker = UIImagePickerController()
     
@@ -188,5 +189,25 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: Meme Object
+    func save() {
+        // Create meme
+        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+    }
+    
+    func generateMemedImage() -> UIImage {
+        // Hide tool bar and nav bar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show tool bar and nav bar
+        
+        return memedImage
     }
 }
