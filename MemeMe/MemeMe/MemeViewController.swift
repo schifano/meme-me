@@ -8,38 +8,21 @@
 
 import UIKit
 
+// TODO: Comments
+// TODO: completionItemsHandler?
+// TODO: Udacity Assets?
+
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // Text Fields
+
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
     let imagePicker = UIImagePickerController()
-    
-    // Text Field Delegate Objects
     let memeTextFieldDelegate = MemeTextFieldDelegate()
-    
-    // FIXME: Order of view life cycle
-    override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // If a camera is not available, disable the camera button.
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        // Subscribe
-        self.subscribeToKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Unsubscribe
-        self.unsubscribeToKeyboardNotifications()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +52,22 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         bottomTextField.textAlignment = .Center
     }
 
+    // FIXME: Order of view life cycle
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // If a camera is not available, disable the camera button.
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        // Subscribe
+        self.subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unsubscribe
+        self.unsubscribeToKeyboardNotifications()
+    }
+    
     /**
         Allows user to select a photo from the PhotoLibrary when the Album button is tapped.
     
