@@ -33,7 +33,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidAppear(animated)
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        
         // Subscribe
         self.subscribeToKeyboardNotifications()
     }
@@ -47,6 +46,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Disable share button until an image is picked
+        shareButton.enabled = false
+        
         // Sets the delegate of the current UIImagePickerController object to the view controller this is written in.
         imagePicker.delegate = self
         
@@ -125,6 +128,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Set the picked image in the UIImageView
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
+            
+            println("Inside image picker") // TEST
+            // Show share button when image is selected
+            shareButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -211,6 +218,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        // FIXME: Crashes when no image is selected
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
