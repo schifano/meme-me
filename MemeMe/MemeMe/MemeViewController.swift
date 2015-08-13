@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Comments
 // TODO: completionItemsHandler?
 // TODO: Udacity Assets?
 
@@ -30,9 +29,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Disable share button until an image is picked
         shareButton.enabled = false
         
-        // Sets the delegate of the current UIImagePickerController object to the view controller this is written in.
+        // Set the delegate of the current UIImagePickerController object to the view controller
         imagePicker.delegate = self
-        
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
         
@@ -41,8 +39,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             NSStrokeColorAttributeName: UIColor.blackColor(),
             NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
-            // Use negative value to allow stroke AND fill
-            NSStrokeWidthAttributeName: "-3.0"
+            NSStrokeWidthAttributeName: "-3.0" // Use negative value to allow stroke AND fill
         ]
         topTextField.defaultTextAttributes = textAttributes
         bottomTextField.defaultTextAttributes = textAttributes
@@ -51,21 +48,17 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
     }
-
-    // FIXME: Order of view life cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        // Subscribe
-        self.subscribeToKeyboardNotifications()
+        self.subscribeToKeyboardNotifications() // Subscribe
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Unsubscribe
-        self.unsubscribeToKeyboardNotifications()
+        self.unsubscribeToKeyboardNotifications() // Unsubscribe
     }
     
     /**
@@ -103,14 +96,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
                 presentViewController(imagePicker, animated: true, completion: nil)
             }
-            
         } else {
             // Alert View deprecated in iOS 8, use Alert Controller
             let alert = UIAlertController(title: "No camera found", message: "Did not find a camera on your current device", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction!) in println("Foo")}))
             presentViewController(alert, animated: true, completion: nil)
         }
-        // TODO: Figure out if I need to dismissViewController here
     }
     
     /**
@@ -198,14 +189,21 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    // MARK: Meme Object
+    // MARK: Meme Generating and Sharings
+    /**
+        Save a generated meme object.
+    */
     func save() {
-        
         var memedImage = generateMemedImage()
         // Create meme
         var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
     }
     
+    /**
+        Generate a meme object with the top text, bottom text, selected image.
+    
+        :returns: memedImage The final meme image designed by the user.
+    */
     func generateMemedImage() -> UIImage {
         // Hide tool bar and nav bar
         self.hide()
@@ -213,7 +211,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
-        // FIXME: Crashes when no image is selected
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -223,20 +220,31 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return memedImage
     }
     
+    /**
+        Hides the top navigation bar and bottom toolbar.
+        Ensures that the final meme image does not include either bar.
+    */
     func hide() {
         self.navigationController?.navigationBarHidden = true
         self.bottomToolbar.hidden = true
     }
     
+    /**
+        Shows the top navigation bar and bottom toolbar.
+    */
     func show() {
         self.navigationController?.navigationBarHidden = false
         self.bottomToolbar.hidden = false
     }
     
+    /**
+        Shares the generated meme image by presenting an Activity View Controller.
+        Connected to the share button on the navigation bar.
+    */
     @IBAction func share() {
         // Generate meme image
         var memedImage = self.generateMemedImage()
-        // Define instance of Activity Controller
+        // Define instance of Activity View Controller
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         // Present View Controller
         self.presentViewController(activityController, animated: true, completion: nil)
