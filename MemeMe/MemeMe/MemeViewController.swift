@@ -9,9 +9,6 @@
 import UIKit
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    // TEST
-    @IBOutlet weak var testImageView: UIImageView!
     
     // Text Fields
     @IBOutlet weak var topTextField: UITextField!
@@ -129,7 +126,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
-            println("Inside image picker") // TEST
             // Show share button when image is selected
             shareButton.enabled = true
         }
@@ -204,7 +200,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     // MARK: Meme Object
-    @IBAction func save() {
+    func save() {
         
         var memedImage = generateMemedImage()
         // Create meme
@@ -225,8 +221,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Show tool bar and nav bar
         self.show()
         
-//        testImageView.image = memedImage // TEST
-        
         return memedImage
     }
     
@@ -238,5 +232,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func show() {
         self.navigationController?.navigationBarHidden = false
         self.bottomToolbar.hidden = false
+    }
+    
+    @IBAction func share() {
+        // Generate meme image
+        var memedImage = self.generateMemedImage()
+        // Define instance of Activity Controller
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        // Present View Controller
+        self.presentViewController(activityController, animated: true, completion: nil)
     }
 }
