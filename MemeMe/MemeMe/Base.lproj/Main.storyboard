@@ -69,10 +69,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b49-WP-fHM">
-                                <rect key="frame" x="115" y="256" width="240" height="258"/>
+                                <rect key="frame" x="115" y="117" width="240" height="397"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.1904725192" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="1" id="AT8-6D-bpU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6zK-cg-Sfq" secondAttribute="trailing" constant="-16" id="ATx-8C-nog"/>
@@ -100,6 +100,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
+                        <outlet property="bottomToolbar" destination="6zK-cg-Sfq" id="DA4-2s-mwg"/>
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
                         <outlet property="shareButton" destination="bUg-ga-HtW" id="CbS-qd-g3Q"/>

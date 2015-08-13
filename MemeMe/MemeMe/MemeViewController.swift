@@ -10,7 +10,9 @@ import UIKit
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // TEST
     @IBOutlet weak var testImageView: UIImageView!
+    
     // Text Fields
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -18,6 +20,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     let imagePicker = UIImagePickerController()
     
@@ -202,6 +206,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func generateMemedImage() -> UIImage {
         // Hide tool bar and nav bar
+        self.hide()
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -210,18 +215,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UIGraphicsEndImageContext()
         
         // Show tool bar and nav bar
+        self.show()
         
-        testImageView.image = memedImage
-        
-        // MARK: Memed Image TEST
-        // Add popup to show image that is being created
-//        let alert = UIAlertController(title: "Image", message: "lol", preferredStyle: .Alert)
-//        var action = UIAlertAction(title: "title", style: .Default, handler: nil)
-//        action.setValue(memedImage, forKey: "image")
-//        alert.addAction(action)
-//        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction!) in println("Foo")}))
-//        presentViewController(alert, animated: true, completion: nil)
+//        testImageView.image = memedImage // TEST
         
         return memedImage
+    }
+    
+    func hide() {
+        self.navigationController?.navigationBarHidden = true
+        self.bottomToolbar.hidden = true
+    }
+    
+    func show() {
+        self.navigationController?.navigationBarHidden = false
+        self.bottomToolbar.hidden = false
     }
 }
