@@ -252,8 +252,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
             // Save the meme
             self.save()
+            // Dismiss View Controller
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
-        // Dismiss View Controller
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }
