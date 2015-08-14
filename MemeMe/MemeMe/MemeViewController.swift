@@ -8,10 +8,9 @@
 
 import UIKit
 
-// TODO: completionItemsHandler?
-
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // MARK: Declared Variables
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -22,6 +21,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let imagePicker = UIImagePickerController()
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
+    // MARK: View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +43,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.defaultTextAttributes = textAttributes
         bottomTextField.defaultTextAttributes = textAttributes
         
-        // TODO: Can we center using a defaultTextAttribute?
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
     }
@@ -60,6 +59,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.unsubscribeToKeyboardNotifications() // Unsubscribe
     }
     
+    // MARK: Image Picker Methods
     /**
         Allows user to select a photo from the PhotoLibrary when the Album button is tapped.
     
@@ -247,13 +247,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         // Present View Controller
         self.presentViewController(activityController, animated: true, completion: nil)
-        // Save the meme
-        self.save()
         
-        // TODO: What is the point of this even anyway
-        activityController.completionWithItemsHandler = {
-            (activity, success, items, error) in
+        activityController.completionWithItemsHandler = { activity, success, items, error in
             println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+            // Save the meme
+            self.save()
         }
         // Dismiss View Controller
         dismissViewControllerAnimated(true, completion: nil)
