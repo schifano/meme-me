@@ -52,6 +52,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications() // Subscribe
+        
+        // print out image view coordinates
+        println("View coordinates: x = \(imageView.frame.origin.x), y = \(imageView.frame.origin.y)") // TEST
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -70,6 +73,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.sourceType = .PhotoLibrary
         // Present the image picker VC
         presentViewController(imagePicker, animated: true, completion: nil)
+        
+//        topTextField.frame = CGRectMake(0, 0, 100, 10)  ????????????????? // TEST
+
     }
     
     /**
@@ -115,10 +121,42 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
+            // print image height and width
+            println("Image height: \(pickedImage.size.height)") // TEST
+            println("Image width: \(pickedImage.size.width)") // TEST
+            
+            
+            
             // Show share button when image is selected
             shareButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /**
+        Calculates the location of the image within the image view.
+        This is used to determine what location the top and bottom textfields should be set.
+    
+        :param: imageView The current image view
+        :returns: imageRect The CGRect of the current image in the image view
+    */
+    func calculateRectOfImage(imageView: UIImageView) -> CGRect {
+        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
+        var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
+        
+        // Calculate aspect with ScaleAspectFit
+        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
+        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
+        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
+        var point: CGPoint = CGPoint(x: 0, y: 0)
+        println("\(imageSize.width *= aspect)")
+        imageSize.height *= aspect
+        
+        var imageRect: CGRect = CGRect(origin: point, size: CGSize(width: imageSize.width, height: imageSize.height))
+        
+        // Adjust text based on image location - new func?
+
+        return imageRect
     }
     
     /**
@@ -252,7 +290,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
             // Save the meme
             self.save()
-            // Dismiss View Controller
+            // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
