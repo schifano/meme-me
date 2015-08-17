@@ -1,5 +1,5 @@
 //
-//  MemeCollectionViewController.swift
+//  SentMemesDetailViewController.swift
 //  MemeMe
 //
 //  Created by Rachel Schifano on 8/17/15.
@@ -9,8 +9,8 @@
 import UIKit
 import Foundation
 
-class MemeCollectionViewController: UIViewController {
- 
+class SentMemesDetailViewController: UITableViewController {
+    
     // Create array of Meme objects
     var memes: [Meme]!
     

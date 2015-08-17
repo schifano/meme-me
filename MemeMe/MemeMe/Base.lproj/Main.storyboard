@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EDT-PT-npa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oMN-cL-WZT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -106,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="387"/>
+            <point key="canvasLocation" x="2047" y="1683"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zuc-7v-q6L">
@@ -125,7 +125,99 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8k-YO-hTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="571" y="387"/>
+            <point key="canvasLocation" x="1495" y="1683"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7IY-Zq-Yw1">
+            <objects>
+                <tabBarController id="oMN-cL-WZT" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="q6d-DL-hO5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xvr-Oe-Cq8" kind="relationship" relationship="viewControllers" id="9BP-Py-9Wg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3b0-uR-Rqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-314" y="1538"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Qli-xB-YF4">
+            <objects>
+                <navigationController id="xvr-Oe-Cq8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FlJ-ze-kiA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OtP-cU-vCa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CQc-ug-e81">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="w53-jN-Oct" kind="relationship" relationship="rootViewController" id="vA1-Da-c3e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Hz-Dx-LUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="1345"/>
+        </scene>
+        <!--Sent Memes Collection View Controller-->
+        <scene sceneID="E6q-ys-7Xv">
+            <objects>
+                <collectionViewController id="w53-jN-Oct" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="afT-0G-qQ5">
+                        <rect key="frame" x="0.0" y="64" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IER-WX-pBk">
+                            <size key="itemSize" width="89" height="88"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="lQq-4a-T8e" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="89" height="88"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="U05-Ge-xiX">
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="88"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.38947429589999999" green="0.088666925839999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="memeImageView" destination="U05-Ge-xiX" id="2TO-Qk-x6e"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="w53-jN-Oct" id="jHB-1e-b90"/>
+                            <outlet property="delegate" destination="w53-jN-Oct" id="glJ-II-w58"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="7t0-SP-DYR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nxg-cv-qra">
+                            <connections>
+                                <segue destination="EDT-PT-npa" kind="presentation" id="25B-Vo-Cm9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLK-Xp-kGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805" y="1345"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="700" height="792"/>
+    </resources>
 </document>
