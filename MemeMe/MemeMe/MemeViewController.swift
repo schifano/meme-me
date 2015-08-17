@@ -147,12 +147,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Calculate aspect with ScaleAspectFit
         var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
         var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
-        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
+        var aspect: CGFloat = fmin(scaleWidth, scaleHeight) // Why choose the min of this?
+        
         var point: CGPoint = CGPoint(x: 0, y: 0)
-        println("\(imageSize.width *= aspect)")
+        println("\(imageSize.width *= aspect)") // TEST
+        
         imageSize.height *= aspect
         
         var imageRect: CGRect = CGRect(origin: point, size: CGSize(width: imageSize.width, height: imageSize.height))
+        // CGRect imageRect=CGRectMake(0,0,imgSize.width*=aspect,imgSize.height*=aspect)
         
         // Adjust text based on image location - new func?
 
@@ -234,6 +237,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var memedImage = generateMemedImage()
         // Create meme
         var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        
+        // Add meme to the meme array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     /**
