@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SentMemesDetailViewController: UITableViewController {
+class SentMemesDetailViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Create array of Meme objects
     var memes: [Meme]!
@@ -21,5 +21,20 @@ class SentMemesDetailViewController: UITableViewController {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+    }
+    
+     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.memes.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell") as! UITableViewCell
+        let meme = self.memes[indexPath.row]
+        
+        // Set text
+        cell.textLabel?.text = meme.topText
+        
+        return cell
     }
 }
