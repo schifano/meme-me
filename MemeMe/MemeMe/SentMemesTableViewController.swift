@@ -18,8 +18,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         super.viewWillAppear(animated)
         
         refreshUI()
-        self.tabBarController?.tabBar.hidden = false
-        
+        self.tabBarController?.tabBar.hidden = false // TODO: WAT
+
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate

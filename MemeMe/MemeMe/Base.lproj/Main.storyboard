@@ -147,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="-332" y="1736"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="Qli-xB-YF4">
             <objects>
                 <navigationController id="xvr-Oe-Cq8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="FlJ-ze-kiA"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="FlJ-ze-kiA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OtP-cU-vCa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -167,11 +167,11 @@
             </objects>
             <point key="canvasLocation" x="273" y="1345"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="w3p-F0-YJB">
             <objects>
                 <navigationController id="7hF-43-d01" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="2cz-wr-hjm"/>
+                    <tabBarItem key="tabBarItem" title="" image="table" id="2cz-wr-hjm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aSL-qR-e6K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -280,6 +280,10 @@
             <point key="canvasLocation" x="805" y="1345"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9LD-9U-KAh"/>
     </inferredMetricsTieBreakers>
