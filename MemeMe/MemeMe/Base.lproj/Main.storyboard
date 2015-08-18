@@ -92,14 +92,17 @@
                                 <action selector="share" destination="vXZ-lx-hvc" id="gkF-z5-5rB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC">
+                            <connections>
+                                <action selector="cancelImagePicker:" destination="vXZ-lx-hvc" id="nax-wI-JFA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
                         <outlet property="bottomToolbar" destination="6zK-cg-Sfq" id="DA4-2s-mwg"/>
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
-                        <outlet property="cancelButton" destination="t4y-mP-ROC" id="u5k-Km-abS"/>
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
                         <outlet property="shareButton" destination="bUg-ga-HtW" id="CbS-qd-g3Q"/>
                         <outlet property="topTextField" destination="B7P-Ru-2t4" id="Iu8-Ha-7mr"/>

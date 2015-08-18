@@ -134,6 +134,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
+        Dismisses the image picker view controller.
+    
+        :param: sender The Cancel button on the nav bar
+    */
+    @IBAction func cancelImagePicker(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /**
         Calculates the location of the image within the image view.
         This is used to determine what location the top and bottom textfields should be set.
     
