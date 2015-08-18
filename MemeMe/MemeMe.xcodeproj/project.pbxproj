@@ -91,16 +91,11 @@
 		2938CAEA1B7924BB002F20D4 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
-				2938CAED1B7924BB002F20D4 /* AppDelegate.swift */,
-				2938CAEF1B7924BB002F20D4 /* MemeViewController.swift */,
-				29368E251B826A650010FFCF /* SentMemesCollectionViewController.swift */,
-				29368E271B826A760010FFCF /* SentMemesDetailViewController.swift */,
-				298121A91B837F2E0017ED25 /* SentMemesTableViewController.swift */,
-				29DE32F71B7A550600C3FDAE /* MemeTextFieldDelegate.swift */,
-				29FE18981B829BB000FDF4C7 /* MemeCollectionViewCell.swift */,
+				298121AF1B83B2480017ED25 /* Model */,
+				298121B01B83B25A0017ED25 /* Views */,
+				298121AD1B83B2180017ED25 /* Controllers */,
+				298121AE1B83B2220017ED25 /* Delegates */,
 				2938CAF11B7924BB002F20D4 /* Main.storyboard */,
-				298121AB1B83A5AE0017ED25 /* MemeTableViewCell.swift */,
-				2981E4E11B7BC56E001B5355 /* Meme.swift */,
 				2938CAF41B7924BB002F20D4 /* Images.xcassets */,
 				2938CAF61B7924BB002F20D4 /* LaunchScreen.xib */,
 				2938CAEB1B7924BB002F20D4 /* Supporting Files */,
@@ -131,6 +126,43 @@
 				2938CB021B7924BB002F20D4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		298121AD1B83B2180017ED25 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2938CAEF1B7924BB002F20D4 /* MemeViewController.swift */,
+				29368E251B826A650010FFCF /* SentMemesCollectionViewController.swift */,
+				298121A91B837F2E0017ED25 /* SentMemesTableViewController.swift */,
+				29368E271B826A760010FFCF /* SentMemesDetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		298121AE1B83B2220017ED25 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				29DE32F71B7A550600C3FDAE /* MemeTextFieldDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		298121AF1B83B2480017ED25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2938CAED1B7924BB002F20D4 /* AppDelegate.swift */,
+				2981E4E11B7BC56E001B5355 /* Meme.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		298121B01B83B25A0017ED25 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				29FE18981B829BB000FDF4C7 /* MemeCollectionViewCell.swift */,
+				298121AB1B83A5AE0017ED25 /* MemeTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

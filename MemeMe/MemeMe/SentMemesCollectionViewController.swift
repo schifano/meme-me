@@ -19,7 +19,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         super.viewDidLoad()
         
         let space: CGFloat = 3.0
-        // what does this do
+        // TODO:  what does this do
         let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
         
         flowLayout.minimumInteritemSpacing = space
@@ -40,11 +40,24 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     // MARK: Collection View Data Source
     // TODO: Add better performance for adding and deleting items
     
+    /**
+        Asks the data source for the number of items in the specified section. (required)
+    
+        :param: collectionView An object representing the collection view requesting this information.
+        :param: section An index number identifying a section in collectionView.
+        :returns: self.memes.count The number of rows (memes) in section
+    */
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println("Memes Count: \(self.memes.count)") // TEST
         return self.memes.count
     }
     
+    /**
+        Asks the data source for the cell that corresponds to the specified item in the collection view. (required)
+    
+        :param: collectionView An object representing the collection view requesting this information.
+        :param: indexPath The index path that specifies the location of the item.
+        :returns: cell A configured cell object.
+    */
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
