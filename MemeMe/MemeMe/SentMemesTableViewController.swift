@@ -17,12 +17,12 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        refreshUI()
-        
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+        
+        self.tableView.reloadData()
     }
     
     // MARK: Table View Data Source
@@ -55,14 +55,5 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         cell.bottomTextLabel.text = meme.bottomText
         
         return cell
-    }
-    
-    /**
-        Helper method for refreshing the data on the main thread displayed in the table view.
-    */
-    func refreshUI() {
-        dispatch_async(dispatch_get_main_queue(),{
-            self.tableView.reloadData()
-        });
     }
 }

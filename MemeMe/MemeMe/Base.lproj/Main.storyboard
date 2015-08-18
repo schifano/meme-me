@@ -99,6 +99,7 @@
                         <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
                         <outlet property="bottomToolbar" destination="6zK-cg-Sfq" id="DA4-2s-mwg"/>
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
+                        <outlet property="cancelButton" destination="t4y-mP-ROC" id="u5k-Km-abS"/>
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
                         <outlet property="shareButton" destination="bUg-ga-HtW" id="CbS-qd-g3Q"/>
                         <outlet property="topTextField" destination="B7P-Ru-2t4" id="Iu8-Ha-7mr"/>
@@ -193,22 +194,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" rowHeight="80" id="Da3-Az-uam" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" rowHeight="125" id="Da3-Az-uam" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Da3-Az-uam" id="55u-qk-YAe">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6NN-6D-B0S">
-                                            <rect key="frame" x="8" y="7" width="116" height="65"/>
+                                            <rect key="frame" x="8" y="7" width="116" height="109"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TOP TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N42-Th-r3N" userLabel="Top Text Label">
-                                            <rect key="frame" x="132" y="29" width="117" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BOTTOM TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-kI-XbE" userLabel="Bottom Text Label">
+                                            <rect key="frame" x="142" y="76" width="131" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BOTTOM TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-kI-XbE" userLabel="Bottom Text Label">
-                                            <rect key="frame" x="275" y="29" width="131" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TOP TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N42-Th-r3N" userLabel="Top Text Label">
+                                            <rect key="frame" x="142" y="28" width="117" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
