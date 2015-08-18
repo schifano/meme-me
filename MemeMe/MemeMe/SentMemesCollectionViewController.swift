@@ -30,7 +30,6 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         super.viewWillAppear(animated)
         
         self.collectionView!.reloadData()
-        self.tabBarController?.tabBar.hidden = false
         
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
