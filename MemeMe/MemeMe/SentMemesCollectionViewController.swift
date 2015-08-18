@@ -13,6 +13,18 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
  
     // Create array of Meme objects
     var memes: [Meme]!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let space: CGFloat = 3.0
+        // what does this do
+        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+    }
         
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,6 +39,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     }
     
     // MARK: Collection View Data Source
+    // TODO: Add better performance for adding and deleting items
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("Memes Count: \(self.memes.count)") // TEST
