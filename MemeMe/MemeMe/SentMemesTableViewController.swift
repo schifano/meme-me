@@ -17,7 +17,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tableView!.reloadData()
+        refreshUI()
         self.tabBarController?.tabBar.hidden = false
         
         // Access the shared model
@@ -39,5 +39,11 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         cell.textLabel?.text = meme.topText
         
         return cell
+    }
+    
+    func refreshUI() {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.tableView.reloadData()
+        });
     }
 }
