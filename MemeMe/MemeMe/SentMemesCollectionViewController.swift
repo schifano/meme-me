@@ -21,6 +21,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let space: CGFloat = 3.0
         
         // Determine size of collection items for portrait and landscape
+        // TODO: Put into helpher method?
         let dimension: CGFloat
         if UIDevice.currentDevice().orientation.isPortrait {
             dimension = (self.view.frame.size.width - (2 * space)) / 3.0
@@ -70,7 +71,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
         // Set the image
         cell.memeImageView?.image = meme.memedImage
-
+    
         return cell
     }
 }

@@ -56,6 +56,13 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         cell.topTextLabel.text = meme.topText
         cell.bottomTextLabel.text = meme.bottomText
         
+//        if UIDevice.currentDevice().orientation.isPortrait {
+//            cell.imageView?.frame.size.width = 110
+//            cell.imageView?.frame.size.height = 110
+//            
+//            self.tableView.reloadData()
+//        }
+//        
         return cell
     }
 }
