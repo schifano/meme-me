@@ -17,6 +17,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tableView.rowHeight = 125
+        
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
