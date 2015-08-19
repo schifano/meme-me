@@ -19,9 +19,14 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         super.viewDidLoad()
         
         let space: CGFloat = 3.0
-        // TODO:  what does this do
-        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
         
+        // Determine size of collection items for portrait and landscape
+        let dimension: CGFloat
+        if UIDevice.currentDevice().orientation.isPortrait {
+            dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        } else {
+            dimension = (self.view.frame.size.height - (2 * space)) / 3.0
+        }
         flowLayout.minimumInteritemSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
     }
