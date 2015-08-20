@@ -132,8 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				2938CAEF1B7924BB002F20D4 /* MemeViewController.swift */,
-				29368E251B826A650010FFCF /* SentMemesCollectionViewController.swift */,
 				298121A91B837F2E0017ED25 /* SentMemesTableViewController.swift */,
+				29368E251B826A650010FFCF /* SentMemesCollectionViewController.swift */,
 				29368E271B826A760010FFCF /* SentMemesDetailViewController.swift */,
 			);
 			name = Controllers;

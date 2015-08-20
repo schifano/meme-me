@@ -11,5 +11,13 @@ import Foundation
 
 class SentMemesDetailViewController: UIViewController {
     
-    // TODO: This class will correspond to the detail of each table view cell
+    @IBOutlet weak var detailImageView: UIImageView!
+
+    var meme: Meme!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.detailImageView.image = self.meme.memedImage
+    }
 }

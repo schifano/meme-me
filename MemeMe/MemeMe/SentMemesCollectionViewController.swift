@@ -82,4 +82,11 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     
         return cell
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let detailController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
+        detailController.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailController, animated: true)
+    }
 }

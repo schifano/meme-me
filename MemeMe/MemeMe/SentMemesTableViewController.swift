@@ -19,7 +19,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         super.viewDidLoad()
         if firstRun == true {
             firstRun = false
-            self.segueToMemeEditorNavigationController()
+            // FIXME: Presenting view controllers on detached view controllers is discouraged
+//            self.segueToMemeEditorNavigationController()
         }
     }
     
@@ -74,8 +75,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell") as! MemeTableViewCell
         let meme = self.memes[indexPath.row]
         
-        // Set top/bottom text and memed image
-        cell.imageView?.image = meme.memedImage
+        // Set top/bottom text and original image
+        cell.memeImageView.image = meme.originalImage
         cell.topTextLabel.text = meme.topText
         cell.bottomTextLabel.text = meme.bottomText
         
@@ -87,5 +88,12 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
 //        }
 //        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let detailController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
+        detailController.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailController, animated: true)
     }
 }
