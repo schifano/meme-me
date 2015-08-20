@@ -33,18 +33,34 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
         
+        transformIntoMemeText(topTextField, bottomText: bottomTextField, className: "MemeViewController")
+    
+    }
+    
+    internal func transformIntoMemeText(topText: UITextField, bottomText: UITextField, className: String) {
+        
+        var MAX_FONT_SIZE: CGFloat = 0.0
+        // Check if textField is applied to a custom view cell
+        if className == "MemeViewController"{
+            MAX_FONT_SIZE = 50.0
+            println("INSIDE IF: 50") // TEST
+        } else {
+            MAX_FONT_SIZE = 25.0
+            println("INSIDE ELSE: 25") // TEST
+        }
+        
         // Create dictionary of default attributes
         let textAttributes = [
             NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: MAX_FONT_SIZE)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSStrokeWidthAttributeName: "-3.0" // Use negative value to allow stroke AND fill
         ]
-        topTextField.defaultTextAttributes = textAttributes
-        bottomTextField.defaultTextAttributes = textAttributes
+        topText.defaultTextAttributes = textAttributes
+        bottomText.defaultTextAttributes = textAttributes
         
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
+        topText.textAlignment = .Center
+        bottomText.textAlignment = .Center
     }
     
     override func viewWillAppear(animated: Bool) {

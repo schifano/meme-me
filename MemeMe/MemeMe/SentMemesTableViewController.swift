@@ -14,6 +14,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     // Create array of Meme objects
     var memes: [Meme]!
     var firstRun: Bool = true
+    var memeViewController = MemeViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,21 +76,19 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell") as! MemeTableViewCell
         let meme = self.memes[indexPath.row]
         
-//        cell.memeImageView.frame.size.width = 110
-//        cell.memeImageView.frame.size.height = 110
-        
         // Set top/bottom text and original image
         cell.memeImageView.image = meme.originalImage
         cell.topTextLabel.text = meme.topText
         cell.bottomTextLabel.text = meme.bottomText
-        
-//        if UIDevice.currentDevice().orientation.isPortrait {
-//            cell.imageView?.frame.size.width = 110
-//            cell.imageView?.frame.size.height = 110
-//            
-//            self.tableView.reloadData()
-//        }
-//        
+
+        cell.topImageViewTextField.enabled = false
+        cell.bottomImageViewTextField.enabled = false
+        cell.topImageViewTextField.text = meme.topText
+        cell.bottomImageViewTextField.text = meme.bottomText
+
+        // Make text on image view in cell also "meme font"
+        memeViewController.transformIntoMemeText(cell.topImageViewTextField, bottomText: cell.bottomImageViewTextField, className: "SentMemesTableViewController")
+    
         return cell
     }
     

@@ -208,22 +208,34 @@
                                             <rect key="frame" x="8" y="7" width="110" height="110"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BOTTOM TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-kI-XbE" userLabel="Bottom Text Label">
-                                            <rect key="frame" x="142" y="76" width="131" height="21"/>
+                                            <rect key="frame" x="142" y="76" width="240" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TOP TEXT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N42-Th-r3N" userLabel="Top Text Label">
-                                            <rect key="frame" x="142" y="28" width="117" height="21"/>
+                                            <rect key="frame" x="142" y="28" width="240" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-cg-AI1" userLabel="Image View Top Text Field">
+                                            <rect key="frame" x="18" y="18" width="90" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="b22-Wi-5Ur" userLabel="Image View Bottom Text Field">
+                                            <rect key="frame" x="18" y="86" width="90" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bottomImageViewTextField" destination="b22-Wi-5Ur" id="V6e-Oe-b2P"/>
                                     <outlet property="bottomTextLabel" destination="tbc-kI-XbE" id="rAX-Xy-m5w"/>
                                     <outlet property="memeImageView" destination="6NN-6D-B0S" id="iDC-IY-VOT"/>
+                                    <outlet property="topImageViewTextField" destination="qXh-cg-AI1" id="8Gg-Ge-aJr"/>
                                     <outlet property="topTextLabel" destination="N42-Th-r3N" id="mLj-GF-Mew"/>
                                 </connections>
                             </tableViewCell>
@@ -297,11 +309,23 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U05-Ge-xiX">
                                             <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                         </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-8z-Ujt" userLabel="Image View Top Text Field">
+                                            <rect key="frame" x="16" y="18" width="90" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Bgs-E6-TQk" userLabel="Image View Bottom Text Field">
+                                            <rect key="frame" x="16" y="85" width="90" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="bottomImageViewTextField" destination="Bgs-E6-TQk" id="8Tn-ke-q3z"/>
                                     <outlet property="memeImageView" destination="U05-Ge-xiX" id="2TO-Qk-x6e"/>
+                                    <outlet property="topImageViewTextField" destination="kCJ-8z-Ujt" id="wB7-EL-8iO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -331,6 +355,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="25B-Vo-Cm9"/>
+        <segue reference="9LD-9U-KAh"/>
     </inferredMetricsTieBreakers>
 </document>

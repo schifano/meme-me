@@ -12,6 +12,12 @@ import Foundation
 class MemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
+    
+    
+    @IBOutlet weak var topImageViewTextField: UITextField!
+    @IBOutlet weak var bottomImageViewTextField: UITextField!
+    
+    
     @IBOutlet weak var bottomTextLabel: UILabel!
     @IBOutlet weak var topTextLabel: UILabel!
 }

@@ -13,6 +13,8 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
  
     // Create array of Meme objects
     var memes: [Meme]!
+    var memeViewController = MemeViewController()
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
@@ -78,8 +80,16 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let meme = self.memes[indexPath.row]
         
         // Set the image
-        cell.memeImageView?.image = meme.originalImage
+        cell.memeImageView.image = meme.originalImage
     
+        cell.topImageViewTextField.enabled = false
+        cell.bottomImageViewTextField.enabled = false
+        cell.topImageViewTextField.text = meme.topText
+        cell.bottomImageViewTextField.text = meme.bottomText
+        
+        // Make text on image view in cell also "meme font"
+        memeViewController.transformIntoMemeText(cell.topImageViewTextField, bottomText: cell.bottomImageViewTextField, className: "SentMemesCollectionViewController")
+
         return cell
     }
     
