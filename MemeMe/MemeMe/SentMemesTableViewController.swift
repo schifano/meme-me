@@ -75,6 +75,9 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell") as! MemeTableViewCell
         let meme = self.memes[indexPath.row]
         
+//        cell.memeImageView.frame.size.width = 110
+//        cell.memeImageView.frame.size.height = 110
+        
         // Set top/bottom text and original image
         cell.memeImageView.image = meme.originalImage
         cell.topTextLabel.text = meme.topText

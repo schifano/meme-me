@@ -78,7 +78,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let meme = self.memes[indexPath.row]
         
         // Set the image
-        cell.memeImageView?.image = meme.memedImage
+        cell.memeImageView?.image = meme.originalImage
     
         return cell
     }
