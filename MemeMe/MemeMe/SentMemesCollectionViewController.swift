@@ -43,6 +43,14 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         memes = appDelegate.memes
     }
     
+    /**
+        Dismisses the image picker view controller.
+        
+        :param: sender The Cancel button on the nav bar
+    */
+    @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
+    }
+    
     // MARK: Collection View Data Source
     // TODO: Add better performance for adding and deleting items
     

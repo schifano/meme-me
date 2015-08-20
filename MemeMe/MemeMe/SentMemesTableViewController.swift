@@ -13,6 +13,15 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     
     // Create array of Meme objects
     var memes: [Meme]!
+    var firstRun: Bool = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if firstRun == true {
+            firstRun = false
+            self.segueToMemeEditorNavigationController()
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,6 +34,20 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         memes = appDelegate.memes
         
         self.tableView.reloadData()
+    }
+
+    func segueToMemeEditorNavigationController() {
+        var navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
+        // Present the view controller
+        self.presentViewController(navigationController, animated: false, completion: nil)
+    }
+    
+    /**
+        Dismisses the image picker view controller.
+        
+        :param: sender The Cancel button on the nav bar
+    */
+    @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
     }
     
     // MARK: Table View Data Source

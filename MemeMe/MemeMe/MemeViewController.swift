@@ -49,6 +49,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications() // Subscribe
@@ -130,15 +131,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Show share button when image is selected
             shareButton.enabled = true
         }
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    /**
-        Dismisses the image picker view controller.
-    
-        :param: sender The Cancel button on the nav bar
-    */
-    @IBAction func cancelImagePicker(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
