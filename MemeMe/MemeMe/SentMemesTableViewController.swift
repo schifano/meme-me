@@ -13,17 +13,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     
     // Create array of Meme objects
     var memes: [Meme]!
-    var firstRun: Bool = true
     var memeViewController = MemeViewController()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if firstRun == true {
-            firstRun = false
-            // FIXME: Presenting view controllers on detached view controllers is discouraged
-//            self.segueToMemeEditorNavigationController()
-        }
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,12 +28,6 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         self.tableView.reloadData()
     }
 
-    func segueToMemeEditorNavigationController() {
-        var navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
-        // Present the view controller
-        self.presentViewController(navigationController, animated: false, completion: nil)
-    }
-    
     /**
         Dismisses the image picker view controller.
         
