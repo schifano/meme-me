@@ -18,6 +18,9 @@ class SentMemesDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.detailImageView.image = self.meme.memedImage
+        if let image = meme.memedImage {
+            detailImageView.image = image
+        }
+        
     }
 }
