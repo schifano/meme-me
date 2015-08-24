@@ -23,4 +23,9 @@ class SentMemesDetailViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func editMeme(sender: UIBarButtonItem) {
+        
+        
+    }
 }

@@ -284,7 +284,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jg3-el-lWT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAb-En-CdK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAb-En-CdK">
+                            <connections>
+                                <action selector="editMeme:" destination="0cy-fp-KW6" id="lST-Kk-1lO"/>
+                                <segue destination="EDT-PT-npa" kind="presentation" id="3PZ-Rf-9De"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -383,6 +388,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9LD-9U-KAh"/>
+        <segue reference="3PZ-Rf-9De"/>
     </inferredMetricsTieBreakers>
 </document>
