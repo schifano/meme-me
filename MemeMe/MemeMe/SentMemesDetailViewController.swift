@@ -21,21 +21,16 @@ class SentMemesDetailViewController: UIViewController {
         if let image = meme.memedImage {
             detailImageView.image = image
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("DETAIL VIEW PREPARE FOR SEGUE") // TEST
-//        var navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
-//            +        // Present the view controller
-//            +        self.presentViewController(navigationController, animated: false, completion: nil)
-//        
-//        if segue.identifier == "Edit" {
-            if let a = segue.destinationViewController as? MemeViewController {
-                println("segue to MemeViewController") // TEST
-                let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-                applicationDelegate.editorMeme = self.meme // the editor meme is updated so when we go back to Editor View we display the selected meme to edit
-            }
-//        }
+        
+        if segue.identifier == "Edit"{
+            var navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
+            presentViewController(navigationController, animated: true, completion: nil)
+            let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            // Update the editor meme to be re-displayed
+            applicationDelegate.editorMeme = self.meme
+        }
     }
 }
