@@ -331,7 +331,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Save the meme
             self.save()
             // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.performSegueWithIdentifier("unwindEdit", sender: nil)
         }
     }
 }

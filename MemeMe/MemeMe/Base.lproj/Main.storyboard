@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
-                                <rect key="frame" x="0.0" y="65" width="414" height="626"/>
+                                <rect key="frame" x="0.0" y="21" width="414" height="670"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-LF-BUq">
@@ -60,7 +60,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
-                                <rect key="frame" x="36" y="145" width="342" height="50"/>
+                                <rect key="frame" x="36" y="101" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
                                 </constraints>
@@ -94,11 +94,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC">
                             <connections>
-                                <segue destination="DEf-AE-aB3" kind="unwind" unwindAction="cancelImagePicker:" id="rB9-hj-itr"/>
+                                <segue destination="DEf-AE-aB3" kind="unwind" identifier="unwindEdit" unwindAction="cancelImagePicker:" id="rB9-hj-itr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
                         <outlet property="bottomToolbar" destination="6zK-cg-Sfq" id="DA4-2s-mwg"/>
@@ -111,7 +110,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <exit id="DEf-AE-aB3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3551" y="1724"/>
+            <point key="canvasLocation" x="3699" y="1724"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zuc-7v-q6L">
@@ -388,6 +387,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9LD-9U-KAh"/>
-        <segue reference="BIq-7e-apr"/>
+        <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>
