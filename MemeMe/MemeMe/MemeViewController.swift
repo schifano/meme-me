@@ -82,6 +82,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             imageView.image = meme.originalImage
+            // Apparently order of calling content mode matters
+            imageView.contentMode = .ScaleToFill
 
             shareButton.enabled = true
             applicationDelegate.editMode = false
