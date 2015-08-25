@@ -45,10 +45,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Check if textField is applied to a custom view cell
         if className == "MemeViewController"{
             MAX_FONT_SIZE = 50.0
-            println("INSIDE IF: 50") // TEST
         } else {
             MAX_FONT_SIZE = 25.0
-            println("INSIDE ELSE: 25") // TEST
         }
         
         // Create dictionary of default attributes
@@ -76,21 +74,17 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
         if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
-            println("INSIDE MEMEVC editorMeme if") // TEST
             self.meme = applicationDelegate.editorMeme
             // Redraw meme
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             imageView.image = meme.originalImage
             // Apparently order of calling content mode matters
-            imageView.contentMode = .ScaleToFill
+            imageView.contentMode = .ScaleAspectFit
 
             shareButton.enabled = true
             applicationDelegate.editMode = false
         }
-        
-        // print out image view coordinates
-        println("View coordinates: x = \(imageView.frame.origin.x), y = \(imageView.frame.origin.y)") // TEST
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -109,10 +103,79 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.sourceType = .PhotoLibrary
         // Present the image picker VC
         presentViewController(imagePicker, animated: true, completion: nil)
-        
-//        topTextField.frame = CGRectMake(0, 0, 100, 10)  ????????????????? // TEST
-
     }
+
+    // FIXME: Is there a way to find the bottom right point of an image, not just top left? Or, check orientation to recalculate the drawing of the textfield
+    /**
+        Calculates the location of the image within the image view.
+        This is used to determine what location the top and bottom textfields should be set.
+        
+        :param: imageView The current image view
+        :returns: imageRect The CGRect of the current image in the image view
+    */
+    func calculateRectOfImage(imageView: UIImageView) -> CGRect {
+        println("calculateRectOfImage") // TEST
+        
+        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
+        var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
+        
+        // Calculate aspect with ScaleAspectFit
+        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
+        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
+        // Find the min
+        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
+        
+        // CGSize
+        imageSize.width *= aspect
+        imageSize.height *= aspect
+        
+        // CGPoint
+        var imageOriginX = (imageViewSize.width - imageSize.width) / 2
+        var imageOriginY = (imageViewSize.height - imageSize.height) / 2
+        
+        // Add image offset
+        imageOriginX += imageView.frame.origin.x
+        imageOriginY += imageView.frame.origin.y
+        
+        var imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
+        
+        // TEST
+        println("imageOrigin X: \(imageOriginX)")
+        println("imageOrigin Y: \(imageOriginY)")
+        println("imageSize.width: \(imageSize.width)")
+        println("imageSize.height: \(imageSize.height)")
+        
+        return imageRect
+    }
+    
+    // Adjust text based on image location - new func?
+    // FIXME: This does not override drawTextInRect - may want to call something else?
+    func drawTextInRect(rect: CGRect) {
+//        println("drawTextInRect") // TEST
+//        topTextField.frame = CGRect(x: rect.origin.x, y: rect.origin.y + 500, width: 500, height: 100)
+//        topTextField.backgroundColor = UIColor.blueColor()
+//        self.imageView.addSubview(topTextField)
+        
+        // I just wasn't changing it enough, 10 pts is really small, apparently
+        var y: CGFloat = (rect.origin.y - 50.0)
+        
+        // TEST - DOES THIS EVEN PUT A THING ANYWHERE
+        var testTopTextField: UITextField = UITextField(frame: CGRect(x: rect.origin.x + 10, y: y, width: 300.0, height: 50.0))
+        testTopTextField.text = "KITTENS"
+        testTopTextField.backgroundColor = UIColor.greenColor()
+        self.imageView.addSubview(testTopTextField)
+        
+        var testBottomTextField: UITextField = UITextField(frame: CGRect(x: rect.origin.x, y: rect.origin.y + (rect.size.height / 2), width: 300.0, height: 50.0))
+        testBottomTextField.text = "R SO CEWT"
+        testBottomTextField.backgroundColor = UIColor.purpleColor()
+        self.imageView.addSubview(testBottomTextField)
+        
+        // TEST
+        println("drawText - rect.origin.x: \(rect.origin.x)")
+        println("drawText - rect.origin.y: \(rect.origin.y)")
+        println("y: \(y)") // TEST
+    }
+    
     
     /**
         Allows user to take a photo using either a front or rear camera.
@@ -157,43 +220,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
-            // print image height and width
-            println("Image height: \(pickedImage.size.height)") // TEST
-            println("Image width: \(pickedImage.size.width)") // TEST
+            // MARK: drawTextInRect
+//            drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
             
             // Show share button when image is selected
             shareButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    /**
-        Calculates the location of the image within the image view.
-        This is used to determine what location the top and bottom textfields should be set.
-    
-        :param: imageView The current image view
-        :returns: imageRect The CGRect of the current image in the image view
-    */
-    func calculateRectOfImage(imageView: UIImageView) -> CGRect {
-        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
-        var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
-        
-        // Calculate aspect with ScaleAspectFit
-        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
-        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
-        var aspect: CGFloat = fmin(scaleWidth, scaleHeight) // Why choose the min of this?
-        
-        var point: CGPoint = CGPoint(x: 0, y: 0)
-        println("\(imageSize.width *= aspect)") // TEST
-        
-        imageSize.height *= aspect
-        
-        var imageRect: CGRect = CGRect(origin: point, size: CGSize(width: imageSize.width, height: imageSize.height))
-        // CGRect imageRect=CGRectMake(0,0,imgSize.width*=aspect,imgSize.height*=aspect)
-        
-        // Adjust text based on image location - new func?
-
-        return imageRect
     }
     
     /**
