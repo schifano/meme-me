@@ -276,11 +276,18 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-z6-q0D" userLabel="Detail Meme Image View">
-                                <rect key="frame" x="16" y="64" width="300" height="500"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-z6-q0D" userLabel="Detail Meme Image View">
+                                <rect key="frame" x="57" y="114" width="300" height="554"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lkc-z6-q0D" firstAttribute="leading" secondItem="q3Y-af-Pxy" secondAttribute="leadingMargin" constant="41" id="CFp-gH-OJw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lkc-z6-q0D" secondAttribute="trailing" constant="41" id="EPy-ob-5Fw"/>
+                            <constraint firstAttribute="centerX" secondItem="Lkc-z6-q0D" secondAttribute="centerX" id="FtQ-a7-Jpb"/>
+                            <constraint firstItem="2fm-fJ-8pj" firstAttribute="top" secondItem="Lkc-z6-q0D" secondAttribute="bottom" constant="68" id="b7U-Ew-Uj5"/>
+                            <constraint firstItem="Lkc-z6-q0D" firstAttribute="top" secondItem="ME0-ih-fAT" secondAttribute="bottom" constant="50" id="odL-Om-ifK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jg3-el-lWT">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAb-En-CdK">
@@ -387,6 +394,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9LD-9U-KAh"/>
-        <segue reference="a3G-G0-XdG"/>
+        <segue reference="BIq-7e-apr"/>
     </inferredMetricsTieBreakers>
 </document>
