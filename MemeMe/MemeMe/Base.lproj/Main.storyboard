@@ -245,6 +245,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6fM-E4-LRy">
+                        <barButtonItem key="leftBarButtonItem" title="Delete" id="Sjv-eV-mp1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mCR-wH-Yu1">
                             <connections>
                                 <segue destination="EDT-PT-npa" kind="presentation" identifier="editMeme" id="9LD-9U-KAh"/>
@@ -356,6 +357,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="7t0-SP-DYR">
+                        <barButtonItem key="leftBarButtonItem" title="Delete" id="Zom-ab-ETc"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nxg-cv-qra">
                             <connections>
                                 <segue destination="EDT-PT-npa" kind="presentation" id="25B-Vo-Cm9"/>
