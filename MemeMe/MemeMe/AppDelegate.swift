@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Shared Model for Meme Me
     var memes = [Meme]()
+    var editorMeme: Meme!
+    
+//    //EditorMeme: The current Meme at the Editor View
+//    var editorMeme = Meme(topText: "TOP", bottomText: "BOTTOM", originalImage: UIImage(), memedImage: UIImage())
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

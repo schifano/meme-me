@@ -21,6 +21,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let imagePicker = UIImagePickerController()
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
+    var meme: Meme!
+    
     // MARK: View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications() // Subscribe
+        
+        // Get the current meme to Edit
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+
+        if applicationDelegate.editorMeme != nil {
+            println("INSIDE MEMEVC editorMeme if") // TEST
+            self.meme = applicationDelegate.editorMeme
+            // Redraw meme
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            imageView.image = meme.originalImage
+        }
         
         // print out image view coordinates
         println("View coordinates: x = \(imageView.frame.origin.x), y = \(imageView.frame.origin.y)") // TEST

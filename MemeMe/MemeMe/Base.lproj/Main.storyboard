@@ -248,7 +248,7 @@
                     <navigationItem key="navigationItem" id="6fM-E4-LRy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mCR-wH-Yu1">
                             <connections>
-                                <segue destination="EDT-PT-npa" kind="presentation" id="9LD-9U-KAh"/>
+                                <segue destination="EDT-PT-npa" kind="presentation" identifier="editMeme" id="9LD-9U-KAh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -286,8 +286,7 @@
                     <navigationItem key="navigationItem" id="jg3-el-lWT">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAb-En-CdK">
                             <connections>
-                                <action selector="editMeme:" destination="0cy-fp-KW6" id="lST-Kk-1lO"/>
-                                <segue destination="EDT-PT-npa" kind="presentation" id="3PZ-Rf-9De"/>
+                                <segue destination="vXZ-lx-hvc" kind="presentation" identifier="Edit" id="BIq-7e-apr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -388,6 +387,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3PZ-Rf-9De"/>
+        <segue reference="9LD-9U-KAh"/>
+        <segue reference="BIq-7e-apr"/>
     </inferredMetricsTieBreakers>
 </document>
