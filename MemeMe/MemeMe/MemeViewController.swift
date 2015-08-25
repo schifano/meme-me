@@ -75,13 +75,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Get the current meme to Edit
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
-        if applicationDelegate.editorMeme != nil {
+        if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
             println("INSIDE MEMEVC editorMeme if") // TEST
             self.meme = applicationDelegate.editorMeme
             // Redraw meme
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             imageView.image = meme.originalImage
+
+            shareButton.enabled = true
+            applicationDelegate.editMode = false
         }
         
         // print out image view coordinates
@@ -155,8 +158,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // print image height and width
             println("Image height: \(pickedImage.size.height)") // TEST
             println("Image width: \(pickedImage.size.width)") // TEST
-            
-            
             
             // Show share button when image is selected
             shareButton.enabled = true

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Shared Model for Meme Me
     var memes = [Meme]()
     var editorMeme: Meme!
+    var editMode: Bool!
     
 //    //EditorMeme: The current Meme at the Editor View
 //    var editorMeme = Meme(topText: "TOP", bottomText: "BOTTOM", originalImage: UIImage(), memedImage: UIImage())
