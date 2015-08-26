@@ -252,6 +252,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="Sjv-eV-mp1" id="KlO-Dd-KmV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gr-ZK-pb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -365,6 +368,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="Zom-ab-ETc" id="Q40-hB-R5e"/>
                         <outlet property="flowLayout" destination="IER-WX-pBk" id="fp0-nV-BCl"/>
                     </connections>
                 </collectionViewController>
@@ -395,7 +399,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9LD-9U-KAh"/>
+        <segue reference="25B-Vo-Cm9"/>
         <segue reference="BIq-7e-apr"/>
     </inferredMetricsTieBreakers>
 </document>

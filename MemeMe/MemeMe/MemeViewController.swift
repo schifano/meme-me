@@ -151,10 +151,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // Adjust text based on image location - new func?
     // FIXME: This does not override drawTextInRect - may want to call something else?
     func drawTextInRect(rect: CGRect) {
-//        println("drawTextInRect") // TEST
-//        topTextField.frame = CGRect(x: rect.origin.x, y: rect.origin.y + 500, width: 500, height: 100)
-//        topTextField.backgroundColor = UIColor.blueColor()
-//        self.imageView.addSubview(topTextField)
+        println("drawTextInRect") // TEST
+        topTextField.frame = CGRect(x: rect.origin.x, y: rect.origin.y + 500, width: 500, height: 100)
+        topTextField.backgroundColor = UIColor.blueColor()
+        self.imageView.addSubview(topTextField)
         
         // I just wasn't changing it enough, 10 pts is really small, apparently
         var y: CGFloat = (rect.origin.y - 50.0)
@@ -221,7 +221,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.image = pickedImage
             
             // MARK: drawTextInRect
-//            drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
+            drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
             
             // Show share button when image is selected
             shareButton.enabled = true

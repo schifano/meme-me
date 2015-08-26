@@ -11,13 +11,15 @@ import Foundation
 
 class SentMemesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
     // Create array of Meme objects
     var memes: [Meme]!
     var memeViewController = MemeViewController()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         self.tableView.rowHeight = 125
         
         // Access the shared model
@@ -37,6 +39,15 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     }
     
     // MARK: Table View Data Source
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Even when empty, still enables the delete button upon swipe
+        self.memes.removeAtIndex(indexPath.row)
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        applicationDelegate.memes.removeAtIndex(indexPath.row)
+        self.tableView.reloadData()
+    }
+    
     /**
         Tells the data source to return the number of rows in a given section of a table view. (required)
     
@@ -76,6 +87,13 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         return cell
     }
     
+    /**
+        Tells the delegate that the specified row is now selected.
+        Shows the selected meme's detail view.
+    
+        :param: tableView The current tableView
+        :param: indexPath The specified row that is now selected
+    */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let detailController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController

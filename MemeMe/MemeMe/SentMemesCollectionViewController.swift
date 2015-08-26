@@ -11,6 +11,8 @@ import Foundation
 
 class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
  
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
     // Create array of Meme objects
     var memes: [Meme]!
     var memeViewController = MemeViewController()
@@ -36,7 +38,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.collectionView!.reloadData()
         
         // Access the shared model
