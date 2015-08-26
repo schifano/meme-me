@@ -10,8 +10,6 @@ import UIKit
 import Foundation
 
 class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
- 
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     // Create array of Meme objects
     var memes: [Meme]!

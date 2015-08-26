@@ -11,8 +11,6 @@ import Foundation
 
 class SentMemesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
-    
     // Create array of Meme objects
     var memes: [Meme]!
     var memeViewController = MemeViewController()
