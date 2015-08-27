@@ -84,12 +84,19 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
             self.meme = applicationDelegate.editorMeme
             // Redraw meme
-            topTextField.text = meme.topText
-            bottomTextField.text = meme.bottomText
             imageView.image = meme.originalImage
             // Apparently order of calling content mode matters
             imageView.contentMode = .ScaleAspectFit
+
             drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            
+            // TEST
+            imageView.setNeedsDisplay()
+            imageView.setNeedsLayout()
+            imageView.setNeedsUpdateConstraints()
+            
             shareButton.enabled = true
             applicationDelegate.editMode = false
         }
@@ -166,11 +173,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        println("bottom before: \(bottomTextVerticalSpace.constant)") // TEST
         println("origin Y: \(rect.origin.y)") // TEST
         
-        // larger the value, closer to bottom
-        topTextVerticalSpace.constant = rect.origin.y - 60.0
-        // smaller the value, the closer to bottom
-        // higher number, closer to top
-        bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+
+        
+        if UIDevice.currentDevice().orientation.isPortrait {
+            // larger the value, closer to bottom
+            topTextVerticalSpace.constant = rect.origin.y - 60.0
+            // smaller the value, the closer to bottom
+            // higher number, closer to top
+            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+        } else {
+            topTextVerticalSpace.constant = 0.0
+            bottomTextVerticalSpace.constant = 0.0
+        }
 //        centerVerticalSpace.constant = rect.size.height - 110.0
         
 //        topTextField.backgroundColor = UIColor.blueColor()
