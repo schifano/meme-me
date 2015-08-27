@@ -324,7 +324,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UIGraphicsEndImageContext()
         
         // Show tool bar and nav bar
-        self.show()
+        self.showBottomToolbar()
         
         return memedImage
     }
@@ -337,9 +337,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-        Shows the top navigation bar and bottom toolbar.
+        Shows the bottom toolbar.
     */
-    func show() {
+    func showBottomToolbar() {
         self.bottomToolbar.hidden = false
     }
     
