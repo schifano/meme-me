@@ -313,7 +313,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func generateMemedImage() -> UIImage {
         // Hide tool bar and nav bar
-        self.hide()
+        self.hideBottomToolbar()
         
         var rectOfImage: CGRect = calculateRectOfImage(self.imageView)
         // Render view to an image
@@ -330,11 +330,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-        Hides the top navigation bar and bottom toolbar.
-        Ensures that the final meme image does not include either bar.
+        Hides the bottom toolbar. The top navigation bar does not need to be hidden since we are currently only capturing an image of the underlying view.
     */
-    func hide() {
-//        self.navigationController?.navigationBarHidden = true
+    func hideBottomToolbar() {
         self.bottomToolbar.hidden = true
     }
     
@@ -342,7 +340,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Shows the top navigation bar and bottom toolbar.
     */
     func show() {
-//        self.navigationController?.navigationBarHidden = false
         self.bottomToolbar.hidden = false
     }
     
