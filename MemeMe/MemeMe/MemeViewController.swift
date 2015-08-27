@@ -60,7 +60,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Apparently order of calling content mode matters
             imageView.contentMode = .ScaleAspectFit
 
-            drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
+            adjustTextFieldConstraints(calculateRectOfImage(self.imageView)) // TEST
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             
@@ -121,98 +121,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Present the image picker VC
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-
-    /**
-        Calculates the location of the image within the image view.
-        This is used to determine what location the top and bottom textfields should be set.
-        
-        :param: imageView The current image view.
-        :returns: imageRect The CGRect of the current image in the image view.
-    */
-    func calculateRectOfImage(imageView: UIImageView) -> CGRect {
-        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
-        var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
-        
-        // Calculate aspect with ScaleAspectFit
-        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
-        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
-        // Find the min
-        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
-        
-        // CGSize
-        imageSize.width *= aspect
-        imageSize.height *= aspect
-        
-        // CGPoint
-        var imageOriginX = (imageViewSize.width - imageSize.width) / 2
-        var imageOriginY = (imageViewSize.height - imageSize.height) / 2
-        
-        // Add image offset
-        imageOriginX += imageView.frame.origin.x
-        imageOriginY += imageView.frame.origin.y
-        
-        var imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
-        return imageRect
-    }
-    
-    // Adjust text based on image location - new func?
-    // FIXME: This does not override drawTextInRect - may want to call something else?
-    func drawTextInRect(rect: CGRect) {
-        
-        println("##############################") // TEST
-        // ALWAYS 80, BC CONSTRAINT STARTS AT 80
-//        println("top before: \(topTextVerticalSpace.constant)") // TEST
-//        println("bottom before: \(bottomTextVerticalSpace.constant)") // TEST
-        println("origin Y: \(rect.origin.y)") // TEST
-        
-
-        
-        if UIDevice.currentDevice().orientation.isPortrait {
-            // larger the value, closer to bottom
-            topTextVerticalSpace.constant = rect.origin.y - 60.0
-            // smaller the value, the closer to bottom
-            // higher number, closer to top
-            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-        } else {
-            topTextVerticalSpace.constant = 0.0
-            bottomTextVerticalSpace.constant = 0.0
-        }
-//        centerVerticalSpace.constant = rect.size.height - 110.0
-        
-//        topTextField.backgroundColor = UIColor.blueColor()
-        
-        println("view height: \(self.imageView.frame.size.height)")
-        println("rect height: \(rect.size.height)") // TEST
-        println("vertical center: \(centerVerticalSpace.constant)")
-//        println("rect width: \(rect.size.width)") // TEST
-        println("top AFTER: \(topTextVerticalSpace.constant)") // TEST
-//        println("bottom AFTER: \(bottomTextVerticalSpace.constant)") // TEST
-        
-//        println("drawTextInRect") // TEST
-//        topTextField.frame = CGRect(x: rect.origin.x, y: rect.origin.y + 500, width: 500, height: 100)
-//        topTextField.backgroundColor = UIColor.blueColor()
-//        self.imageView.addSubview(topTextField)
-//        
-//        // I just wasn't changing it enough, 10 pts is really small, apparently
-//        var y: CGFloat = (rect.origin.y - 50.0)
-//        
-//        // TEST - DOES THIS EVEN PUT A THING ANYWHERE
-//        var testTopTextField: UITextField = UITextField(frame: CGRect(x: rect.origin.x + 10, y: y, width: 300.0, height: 50.0))
-//        testTopTextField.text = "KITTENS"
-//        testTopTextField.backgroundColor = UIColor.greenColor()
-//        self.imageView.addSubview(testTopTextField)
-//        
-//        var testBottomTextField: UITextField = UITextField(frame: CGRect(x: rect.origin.x, y: rect.origin.y + (rect.size.height / 2), width: 300.0, height: 50.0))
-//        testBottomTextField.text = "R SO CEWT"
-//        testBottomTextField.backgroundColor = UIColor.purpleColor()
-//        self.imageView.addSubview(testBottomTextField)
-//        
-//        // TEST
-//        println("drawText - rect.origin.x: \(rect.origin.x)")
-//        println("drawText - rect.origin.y: \(rect.origin.y)")
-//        println("y: \(y)") // TEST
-    }
-    
     
     /**
         Allows user to take a photo using either a front or rear camera.
@@ -257,8 +165,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
-            // MARK: drawTextInRect
-            drawTextInRect(calculateRectOfImage(self.imageView)) // TEST
+            adjustTextFieldConstraints(calculateRectOfImage(self.imageView))
             
             // Show share button when image is selected
             shareButton.enabled = true
@@ -273,6 +180,57 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /**
+        Calculates the location of the image within the image view.
+        This is used to determine what location the top and bottom textfields should be set.
+        
+        :param: imageView The current image view.
+        :returns: imageRect The CGRect of the current image in the image view.
+    */
+    func calculateRectOfImage(imageView: UIImageView) -> CGRect {
+        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
+        var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
+        
+        // Calculate aspect with ScaleAspectFit
+        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
+        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
+        // Find the min
+        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
+        
+        // CGSize
+        imageSize.width *= aspect
+        imageSize.height *= aspect
+        
+        // CGPoint
+        var imageOriginX = (imageViewSize.width - imageSize.width) / 2
+        var imageOriginY = (imageViewSize.height - imageSize.height) / 2
+        
+        // Add image offset
+        imageOriginX += imageView.frame.origin.x
+        imageOriginY += imageView.frame.origin.y
+        
+        var imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
+        return imageRect
+    }
+    
+    /**
+        Adjusts text field constraints so that the text is displayed within the image.
+        
+        :param: rect The CGRect of the image.
+    */
+    func adjustTextFieldConstraints(rect: CGRect) {
+        if UIDevice.currentDevice().orientation.isPortrait {
+            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
+            topTextVerticalSpace.constant = rect.origin.y - 60.0
+            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
+            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+        } else {
+            // Landscape orientation does not have offsets to account for - set constraints to 0.0
+            topTextVerticalSpace.constant = 0.0
+            bottomTextVerticalSpace.constant = 0.0
+        }
     }
     
     // MARK: Notification Center Methods
