@@ -32,9 +32,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        println("nav bar height: \(self.navigationController?.navigationBar.frame.size.height)") // TEST
-        
         // Disable share button until an image is picked
         shareButton.enabled = false
         
@@ -43,32 +40,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
         
-        transformIntoMemeText(topTextField, bottomText: bottomTextField, className: "MemeViewController")
-    
-    }
-    
-    internal func transformIntoMemeText(topText: UITextField, bottomText: UITextField, className: String) {
-        
-        var MAX_FONT_SIZE: CGFloat = 0.0
-        // Check if textField is applied to a custom view cell
-        if className == "MemeViewController"{
-            MAX_FONT_SIZE = 50.0
-        } else {
-            MAX_FONT_SIZE = 25.0
-        }
-        
-        // Create dictionary of default attributes
-        let textAttributes = [
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: MAX_FONT_SIZE)!,
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSStrokeWidthAttributeName: "-3.0" // Use negative value to allow stroke AND fill
-        ]
-        topText.defaultTextAttributes = textAttributes
-        bottomText.defaultTextAttributes = textAttributes
-        
-        topText.textAlignment = .Center
-        bottomText.textAlignment = .Center
+        transformIntoMemeText(topTextField, bottomText: bottomTextField, restorationID: self.restorationIdentifier!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -105,6 +77,36 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.unsubscribeToKeyboardNotifications() // Unsubscribe
+    }
+    
+    /**
+        Applies custom text attributes that imitates the common meme font "Impact" for editor and table cells. Why also the table cells? The Udacity example app displays textfields with these attributes on the table cell previews.
+    
+        :param: topText The text of the top text field.
+        :param: bottomText The text of the bottom text field.
+        :param: restorationID The restorationIdentifier associated with the calling view controller.
+    */
+    func transformIntoMemeText(topText: UITextField, bottomText: UITextField, restorationID: NSString) {
+        // Check if textField is applied to a custom view cell
+        var maxFontSize: CGFloat
+        if restorationID == self.restorationIdentifier {
+            maxFontSize = 50.0
+        } else {
+            maxFontSize = 25.0
+        }
+        // Create dictionary of default attributes
+        let textAttributes = [
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: maxFontSize)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSStrokeWidthAttributeName: "-3.0" // Use negative value to allow stroke AND fill
+        ]
+        // Apply attributes
+        topText.defaultTextAttributes = textAttributes
+        bottomText.defaultTextAttributes = textAttributes
+        // Center
+        topText.textAlignment = .Center
+        bottomText.textAlignment = .Center
     }
     
     // MARK: Image Picker Methods
