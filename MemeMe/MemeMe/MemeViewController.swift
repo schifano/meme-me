@@ -122,17 +122,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         presentViewController(imagePicker, animated: true, completion: nil)
     }
 
-    // FIXME: Is there a way to find the bottom right point of an image, not just top left? Or, check orientation to recalculate the drawing of the textfield
     /**
         Calculates the location of the image within the image view.
         This is used to determine what location the top and bottom textfields should be set.
         
-        :param: imageView The current image view
-        :returns: imageRect The CGRect of the current image in the image view
+        :param: imageView The current image view.
+        :returns: imageRect The CGRect of the current image in the image view.
     */
     func calculateRectOfImage(imageView: UIImageView) -> CGRect {
-        println("calculateRectOfImage") // TEST
-        
         var imageViewSize: CGSize = imageView.frame.size // Get size of image view
         var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
         
@@ -155,13 +152,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageOriginY += imageView.frame.origin.y
         
         var imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
-        
-//        // TEST
-//        println("imageOrigin X: \(imageOriginX)")
-//        println("imageOrigin Y: \(imageOriginY)")
-//        println("imageSize.width: \(imageSize.width)")
-//        println("imageSize.height: \(imageSize.height)")
-        
         return imageRect
     }
     
