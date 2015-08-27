@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
-                                <rect key="frame" x="-1" y="64" width="417" height="627"/>
+                                <rect key="frame" x="-1" y="20" width="417" height="671"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
@@ -51,7 +51,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
-                                <rect key="frame" x="36" y="149" width="342" height="50"/>
+                                <rect key="frame" x="36" y="105" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
                                 </constraints>
@@ -84,7 +84,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="9Eb-LF-BUq" secondAttribute="trailing" constant="20" id="e5S-NC-l5L"/>
                             <constraint firstItem="9Eb-LF-BUq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="kEO-sB-1FK"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="oig-cu-CEk"/>
-                            <constraint firstItem="B7P-Ru-2t4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="85" id="syh-0z-ipm"/>
+                            <constraint firstItem="B7P-Ru-2t4" firstAttribute="top" secondItem="0FV-8r-lYQ" secondAttribute="top" constant="85" id="qZ2-65-lDb"/>
                             <constraint firstItem="9Eb-LF-BUq" firstAttribute="bottom" secondItem="0FV-8r-lYQ" secondAttribute="bottom" constant="-85" id="wdm-Ru-SSW"/>
                         </constraints>
                     </view>
@@ -109,7 +109,7 @@
                         <outlet property="imageView" destination="0FV-8r-lYQ" id="A86-DD-OZ3"/>
                         <outlet property="shareButton" destination="bUg-ga-HtW" id="CbS-qd-g3Q"/>
                         <outlet property="topTextField" destination="B7P-Ru-2t4" id="Iu8-Ha-7mr"/>
-                        <outlet property="topTextVerticalSpace" destination="syh-0z-ipm" id="bPt-jK-of8"/>
+                        <outlet property="topTextVerticalSpace" destination="qZ2-65-lDb" id="dcE-kn-Y1e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -272,14 +272,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n2f-xj-3lX">
-                                <rect key="frame" x="0.0" y="16" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="LKT-SQ-PvW">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Tyf-Au-n7D"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-z6-q0D" userLabel="Detail Meme Image View">
                                 <rect key="frame" x="57" y="114" width="300" height="554"/>
                             </imageView>
@@ -398,6 +390,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2kI-XZ-3rX"/>
-        <segue reference="BIq-7e-apr"/>
+        <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>

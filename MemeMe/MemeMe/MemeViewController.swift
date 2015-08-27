@@ -370,7 +370,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Ensures that the final meme image does not include either bar.
     */
     func hide() {
-        self.navigationController?.navigationBarHidden = true
+//        self.navigationController?.navigationBarHidden = true
         self.bottomToolbar.hidden = true
     }
     
@@ -378,7 +378,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Shows the top navigation bar and bottom toolbar.
     */
     func show() {
-        self.navigationController?.navigationBarHidden = false
+//        self.navigationController?.navigationBarHidden = false
         self.bottomToolbar.hidden = false
     }
     
