@@ -170,8 +170,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextVerticalSpace.constant = rect.origin.y - 60.0
         // smaller the value, the closer to bottom
         // higher number, closer to top
-        bottomTextVerticalSpace.constant = (imageView.frame.size.height - rect.size.height) / 2
-        centerVerticalSpace.constant = rect.size.height - 110.0
+        bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+//        centerVerticalSpace.constant = rect.size.height - 110.0
         
 //        topTextField.backgroundColor = UIColor.blueColor()
         

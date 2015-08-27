@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
-                                <rect key="frame" x="-1" y="20" width="417" height="671"/>
+                                <rect key="frame" x="-1" y="64" width="417" height="627"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
@@ -51,7 +51,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
-                                <rect key="frame" x="36" y="105" width="342" height="50"/>
+                                <rect key="frame" x="36" y="149" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
                                 </constraints>
@@ -60,7 +60,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-LF-BUq">
-                                <rect key="frame" x="36" y="530" width="342" height="50"/>
+                                <rect key="frame" x="36" y="556" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cXq-Cc-uqP"/>
                                 </constraints>
@@ -71,12 +71,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.1904725192" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6zK-cg-Sfq" firstAttribute="top" secondItem="9Eb-LF-BUq" secondAttribute="bottom" constant="111" id="6ir-U9-0uR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6zK-cg-Sfq" secondAttribute="trailing" constant="-16" id="ATx-8C-nog"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6zK-cg-Sfq" secondAttribute="bottom" id="Eaq-9u-0k6"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-17" id="FYj-4b-CEA"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="0FV-8r-lYQ" secondAttribute="bottom" constant="45" id="Hml-kF-DdU"/>
-                            <constraint firstItem="9Eb-LF-BUq" firstAttribute="top" secondItem="B7P-Ru-2t4" secondAttribute="bottom" constant="375" id="VLZ-zw-rmo"/>
+                            <constraint firstItem="9Eb-LF-BUq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="B7P-Ru-2t4" secondAttribute="bottom" constant="20" id="VLZ-zw-rmo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0FV-8r-lYQ" secondAttribute="trailing" constant="-18" id="Wf0-bR-rZC"/>
                             <constraint firstItem="0FV-8r-lYQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Wik-BP-HLk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B7P-Ru-2t4" secondAttribute="trailing" constant="20" id="XBq-hR-NDr"/>
@@ -86,6 +85,7 @@
                             <constraint firstItem="9Eb-LF-BUq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="kEO-sB-1FK"/>
                             <constraint firstItem="6zK-cg-Sfq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="oig-cu-CEk"/>
                             <constraint firstItem="B7P-Ru-2t4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="85" id="syh-0z-ipm"/>
+                            <constraint firstItem="9Eb-LF-BUq" firstAttribute="bottom" secondItem="0FV-8r-lYQ" secondAttribute="bottom" constant="-85" id="wdm-Ru-SSW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KP8-aH-kk0">
@@ -102,7 +102,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="9Eb-LF-BUq" id="DTC-Db-1Sa"/>
-                        <outlet property="bottomTextVerticalSpace" destination="6ir-U9-0uR" id="npw-Pe-ReC"/>
+                        <outlet property="bottomTextVerticalSpace" destination="wdm-Ru-SSW" id="hMP-bH-xnr"/>
                         <outlet property="bottomToolbar" destination="6zK-cg-Sfq" id="DA4-2s-mwg"/>
                         <outlet property="cameraButton" destination="AJG-Mf-hWu" id="7ll-aE-QPJ"/>
                         <outlet property="centerVerticalSpace" destination="VLZ-zw-rmo" id="HaX-Od-KtE"/>
@@ -389,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTn-L5-ZJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2124" y="2143"/>
+            <point key="canvasLocation" x="2076" y="2143"/>
         </scene>
     </scenes>
     <resources>
@@ -397,7 +397,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2kI-XZ-3rX"/>
         <segue reference="BIq-7e-apr"/>
-        <segue reference="25B-Vo-Cm9"/>
     </inferredMetricsTieBreakers>
 </document>
