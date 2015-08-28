@@ -293,6 +293,27 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // MARK: Meme Generating and Sharing
     /**
+        Shares the generated meme image by presenting an Activity View Controller.
+        Connected to the share button on the navigation bar.
+    */
+    @IBAction func shareMemedImage(sender: AnyObject) {
+        // Generate meme image
+        var memedImage = self.generateMemedImage()
+        // Define instance of Activity View Controller
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        // Present View Controller
+        self.presentViewController(activityController, animated: true, completion: nil)
+        
+        activityController.completionWithItemsHandler = { activity, success, items, error in
+            println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+            // Save the meme
+            self.save()
+            // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
+            self.performSegueWithIdentifier("unwindEdit", sender: nil)
+        }
+    }
+    
+    /**
         Save a generated meme object.
     */
     func save() {
@@ -341,26 +362,5 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func showBottomToolbar() {
         self.bottomToolbar.hidden = false
-    }
-    
-    /**
-        Shares the generated meme image by presenting an Activity View Controller.
-        Connected to the share button on the navigation bar.
-    */
-    @IBAction func share() {
-        // Generate meme image
-        var memedImage = self.generateMemedImage()
-        // Define instance of Activity View Controller
-        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        // Present View Controller
-        self.presentViewController(activityController, animated: true, completion: nil)
-        
-        activityController.completionWithItemsHandler = { activity, success, items, error in
-            println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
-            // Save the meme
-            self.save()
-            // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
-            self.performSegueWithIdentifier("unwindEdit", sender: nil)
-        }
     }
 }

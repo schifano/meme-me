@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
                                 <rect key="frame" x="-1" y="20" width="417" height="671"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -59,7 +59,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
                                 <rect key="frame" x="36" y="105" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" id="KP8-aH-kk0">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="bUg-ga-HtW">
                             <connections>
-                                <action selector="share" destination="vXZ-lx-hvc" id="gkF-z5-5rB"/>
+                                <action selector="shareMemedImage:" destination="vXZ-lx-hvc" id="c31-yz-Gnp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC">
@@ -304,7 +304,7 @@
         <!--Sent Memes Collection View Controller-->
         <scene sceneID="E6q-ys-7Xv">
             <objects>
-                <collectionViewController id="w53-jN-Oct" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="SentMemesCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w53-jN-Oct" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="afT-0G-qQ5">
                         <rect key="frame" x="0.0" y="64" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -389,7 +389,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9LD-9U-KAh"/>
+        <segue reference="25B-Vo-Cm9"/>
         <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>
