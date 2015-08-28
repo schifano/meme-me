@@ -307,7 +307,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         activityController.completionWithItemsHandler = { activity, success, items, error in
             println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
             // Save the meme
-            self.save()
+            self.saveMemedImage()
             // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
             self.performSegueWithIdentifier("unwindEdit", sender: nil)
         }
@@ -316,7 +316,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Save a generated meme object.
     */
-    func save() {
+    func saveMemedImage() {
         var memedImage = generateMemedImage()
         // Create meme
         var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
