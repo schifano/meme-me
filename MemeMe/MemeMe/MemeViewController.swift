@@ -12,7 +12,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var topTextVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var bottomTextVerticalSpace: NSLayoutConstraint!
-    
     @IBOutlet weak var centerVerticalSpace: NSLayoutConstraint!
     
     // MARK: Declared Variables
@@ -48,7 +47,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications() // Subscribe
+        self.subscribeToKeyboardNotifications() // Subscribe to keyboard
+        self.subscribeToRotationNotifications() // Subscribe to rotation
         
         // Get the current meme to Edit
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -221,7 +221,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         :param: rect The CGRect of the image.
     */
     func adjustTextFieldConstraints(rect: CGRect) {
-        if UIDevice.currentDevice().orientation.isPortrait {
+        
+//        var rotation: String = rotationWillChange()
+        if UIDevice.currentDevice().orientation.isPortrait.boolValue {
             // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
             topTextVerticalSpace.constant = rect.origin.y - 60.0
             // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
@@ -232,6 +234,23 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             bottomTextVerticalSpace.constant = 0.0
         }
     }
+    
+    
+    
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        
+        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+            println("landscape")
+        } else {
+            println("portrait")
+        }
+    }
+    
+    
+    
+    
     
     // MARK: Notification Center Methods
     /**
@@ -291,6 +310,30 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    func subscribeToRotationNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotationWillChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func unsubscribeToRotationNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func rotationWillChange() {
+//        println("rotation will change") // TEST
+//        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+//                topTextVerticalSpace.constant = 0.0
+//                bottomTextVerticalSpace.constant = 0.0
+//            return "landscape"
+//        } else {
+//            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
+//            topTextVerticalSpace.constant = rect.origin.y - 60.0
+//            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
+//            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+//
+//            return "portrait"
+//        }
+    }
+    
     // MARK: Meme Generating and Sharing
     /**
         Shares the generated meme image by presenting an Activity View Controller.
@@ -336,10 +379,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Hide tool bar and nav bar
         self.hideBottomToolbar()
         
-        var rectOfImage: CGRect = calculateRectOfImage(self.imageView)
-        // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-//        UIGraphicsBeginImageContext(rectOfImage.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
