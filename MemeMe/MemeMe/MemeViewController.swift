@@ -60,14 +60,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Apparently order of calling content mode matters
             imageView.contentMode = .ScaleAspectFit
 
-            adjustTextFieldConstraints(calculateRectOfImage(self.imageView)) // TEST
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             
-            // TEST
-            imageView.setNeedsDisplay()
-            imageView.setNeedsLayout()
-            imageView.setNeedsUpdateConstraints()
+            adjustTextFieldConstraints(calculateRectOfImage(self.imageView))
             
             shareButton.enabled = true
             applicationDelegate.editMode = false
@@ -220,37 +216,38 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         :param: rect The CGRect of the image.
     */
-    func adjustTextFieldConstraints(rect: CGRect) {
-        
-//        var rotation: String = rotationWillChange()
-        if UIDevice.currentDevice().orientation.isPortrait.boolValue {
-            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-            topTextVerticalSpace.constant = rect.origin.y - 60.0
-            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
-            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-        } else {
-            // Landscape orientation does not have offsets to account for - set constraints to 0.0
-            topTextVerticalSpace.constant = 0.0
-            bottomTextVerticalSpace.constant = 0.0
+        func adjustTextFieldConstraints(rect: CGRect) {
+    
+            // Checks what the current orientation is before reloading view
+            if UIDevice.currentDevice().orientation.isPortrait.boolValue {
+                // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
+                topTextVerticalSpace.constant = rect.origin.y - 60.0
+                // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
+                bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+            } else {
+                // Landscape orientation does not have offsets to account for - set constraints to 0.0
+                topTextVerticalSpace.constant = 0.0
+                bottomTextVerticalSpace.constant = 0.0
+            }
         }
+    
+    // FIXME: Create method to check for orientation changes and adjust constraints
+    // MARK: Incomplete code for adjusting constraints based on orientation
+    func rotationWillChange() {
+        //        println("rotation will change") // TEST
+        //        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+        //                topTextVerticalSpace.constant = 0.0
+        //                bottomTextVerticalSpace.constant = 0.0
+        //            return "landscape"
+        //        } else {
+        //            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
+        //            topTextVerticalSpace.constant = rect.origin.y - 60.0
+        //            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
+        //            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+        //
+        //            return "portrait"
+        //        }
     }
-    
-    
-    
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        
-        
-        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
-            println("landscape")
-        } else {
-            println("portrait")
-        }
-    }
-    
-    
-    
-    
     
     // MARK: Notification Center Methods
     /**
@@ -316,22 +313,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func unsubscribeToRotationNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
-    }
-    
-    func rotationWillChange() {
-//        println("rotation will change") // TEST
-//        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
-//                topTextVerticalSpace.constant = 0.0
-//                bottomTextVerticalSpace.constant = 0.0
-//            return "landscape"
-//        } else {
-//            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-//            topTextVerticalSpace.constant = rect.origin.y - 60.0
-//            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
-//            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-//
-//            return "portrait"
-//        }
     }
     
     // MARK: Meme Generating and Sharing
