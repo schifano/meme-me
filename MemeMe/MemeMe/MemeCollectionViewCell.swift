@@ -12,7 +12,4 @@ import Foundation
 class MemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
-    
-    @IBOutlet weak var topImageViewTextField: UITextField!
-    @IBOutlet weak var bottomImageViewTextField: UITextField!
 }

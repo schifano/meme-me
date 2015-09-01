@@ -80,16 +80,8 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let meme = self.memes[indexPath.row]
         
         // Set the image
-        cell.memeImageView.image = meme.originalImage
-    
-        cell.topImageViewTextField.enabled = false
-        cell.bottomImageViewTextField.enabled = false
-        cell.topImageViewTextField.text = meme.topText
-        cell.bottomImageViewTextField.text = meme.bottomText
+        cell.memeImageView.image = meme.memedImage
         
-        // Make text on image view in cell also "meme font"
-        memeViewController.transformIntoMemeText(cell.topImageViewTextField, bottomText: cell.bottomImageViewTextField, restorationID: self.restorationIdentifier!)
-
         return cell
     }
     

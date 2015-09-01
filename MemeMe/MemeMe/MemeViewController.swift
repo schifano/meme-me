@@ -39,7 +39,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.delegate = memeTextFieldDelegate
         bottomTextField.delegate = memeTextFieldDelegate
         
-        transformIntoMemeText(topTextField, bottomText: bottomTextField, restorationID: self.restorationIdentifier!)
+        transformIntoMemeText(topTextField, bottomText: bottomTextField)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -82,18 +82,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         :param: bottomText The text of the bottom text field.
         :param: restorationID The restorationIdentifier associated with the calling view controller.
     */
-    func transformIntoMemeText(topText: UITextField, bottomText: UITextField, restorationID: NSString) {
-        // Check if textField is applied to a custom view cell
-        var maxFontSize: CGFloat
-        if restorationID == self.restorationIdentifier {
-            maxFontSize = 50.0
-        } else {
-            maxFontSize = 25.0
-        }
+    func transformIntoMemeText(topText: UITextField, bottomText: UITextField) {
         // Create dictionary of default attributes
         let textAttributes = [
             NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: maxFontSize)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50.0)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSStrokeWidthAttributeName: "-3.0" // Use negative value to allow stroke AND fill
         ]

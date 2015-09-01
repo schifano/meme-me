@@ -70,18 +70,10 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         let meme = self.memes[indexPath.row]
         
         // Set top/bottom text and original image
-        cell.memeImageView.image = meme.originalImage
+        cell.memeImageView.image = meme.memedImage
         cell.topTextLabel.text = meme.topText
         cell.bottomTextLabel.text = meme.bottomText
 
-        cell.topImageViewTextField.enabled = false
-        cell.bottomImageViewTextField.enabled = false
-        cell.topImageViewTextField.text = meme.topText
-        cell.bottomImageViewTextField.text = meme.bottomText
-
-        // Make text on image view in cell also "meme font"
-        memeViewController.transformIntoMemeText(cell.topImageViewTextField, bottomText: cell.bottomImageViewTextField, restorationID: self.restorationIdentifier!)
-    
         return cell
     }
     
