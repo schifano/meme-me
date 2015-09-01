@@ -70,7 +70,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         let meme = self.memes[indexPath.row]
         
         // Set top/bottom text and original image
-        cell.memeImageView.image = meme.originalImage
+        cell.memeImageView.image = meme.memedImage
         cell.topTextLabel.text = meme.topText
         cell.bottomTextLabel.text = meme.bottomText
 
