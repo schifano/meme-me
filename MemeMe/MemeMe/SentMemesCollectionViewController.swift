@@ -26,9 +26,9 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         // TODO: Put into helpher method?
         let dimension: CGFloat
         if UIDevice.currentDevice().orientation.isPortrait {
-            dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+            dimension = (view.frame.size.width - (2 * space)) / 3.0
         } else {
-            dimension = (self.view.frame.size.height - (2 * space)) / 3.0
+            dimension = (view.frame.size.height - (2 * space)) / 3.0
         }
         flowLayout.minimumInteritemSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
@@ -37,7 +37,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.collectionView!.reloadData()
+        collectionView!.reloadData()
         
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
@@ -61,10 +61,10 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     
         :param: collectionView An object representing the collection view requesting this information.
         :param: section An index number identifying a section in collectionView.
-        :returns: self.memes.count The number of rows (memes) in section
+        :returns: memes.count The number of rows (memes) in section
     */
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     
     /**
@@ -77,7 +77,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-        let meme = self.memes[indexPath.row]
+        let meme = memes[indexPath.row]
         
         // Set the image
         cell.memeImageView.image = meme.memedImage
@@ -87,8 +87,8 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let detailController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
-        detailController.meme = self.memes[indexPath.row]
-        self.navigationController?.pushViewController(detailController, animated: true)
+        let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
+        detailController.meme = memes[indexPath.row]
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }
