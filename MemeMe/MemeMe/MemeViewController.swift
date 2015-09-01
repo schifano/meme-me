@@ -47,14 +47,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications() // Subscribe to keyboard
-        self.subscribeToRotationNotifications() // Subscribe to rotation
+        subscribeToKeyboardNotifications() // Subscribe to keyboard
+        subscribeToRotationNotifications() // Subscribe to rotation
         
         // Get the current meme to Edit
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
         if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
-            self.meme = applicationDelegate.editorMeme
+            meme = applicationDelegate.editorMeme
             // Redraw meme
             imageView.image = meme.originalImage
             // Apparently order of calling content mode matters
@@ -63,7 +63,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             
-            adjustTextFieldConstraints(calculateRectOfImage(self.imageView))
+            adjustTextFieldConstraints(calculateRectOfImage(imageView))
             
             shareButton.enabled = true
             applicationDelegate.editMode = false
@@ -72,7 +72,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeToKeyboardNotifications() // Unsubscribe
+        unsubscribeToKeyboardNotifications() // Unsubscribe
     }
     
     /**
@@ -154,7 +154,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
-            adjustTextFieldConstraints(calculateRectOfImage(self.imageView))
+            adjustTextFieldConstraints(calculateRectOfImage(imageView))
             
             // Show share button when image is selected
             shareButton.enabled = true
@@ -253,7 +253,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
@@ -267,7 +267,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -315,11 +315,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     @IBAction func shareMemedImage(sender: AnyObject) {
         // Generate meme image
-        var memedImage = self.generateMemedImage()
+        var memedImage = generateMemedImage()
         // Define instance of Activity View Controller
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         // Present View Controller
-        self.presentViewController(activityController, animated: true, completion: nil)
+        presentViewController(activityController, animated: true, completion: nil)
         
         activityController.completionWithItemsHandler = { activity, success, items, error in
             println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
@@ -351,15 +351,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func generateMemedImage() -> UIImage {
         // Hide tool bar and nav bar
-        self.hideBottomToolbar()
+        hideBottomToolbar()
         
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         // Show tool bar and nav bar
-        self.showBottomToolbar()
+        showBottomToolbar()
         
         return memedImage
     }
@@ -368,13 +368,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Hides the bottom toolbar. The top navigation bar does not need to be hidden since we are currently only capturing an image of the underlying view.
     */
     func hideBottomToolbar() {
-        self.bottomToolbar.hidden = true
+        bottomToolbar.hidden = true
     }
     
     /**
         Shows the bottom toolbar.
     */
     func showBottomToolbar() {
-        self.bottomToolbar.hidden = false
+        bottomToolbar.hidden = false
     }
 }
