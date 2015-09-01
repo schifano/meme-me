@@ -80,7 +80,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let meme = self.memes[indexPath.row]
         
         // Set the image
-        cell.memeImageView.image = meme.originalImage
+        cell.memeImageView.image = meme.memedImage
         cell.topImageViewTextField.text = meme.topText
         cell.bottomImageViewTextField.text = meme.bottomText
         
