@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oMN-cL-WZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oMN-cL-WZT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
                                 <rect key="frame" x="-1" y="64" width="417" height="627"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -59,7 +59,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
                                 <rect key="frame" x="36" y="149" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
@@ -222,23 +222,11 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="qXh-cg-AI1" userLabel="Image View Top Text Field">
-                                            <rect key="frame" x="18" y="18" width="90" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="b22-Wi-5Ur" userLabel="Image View Bottom Text Field">
-                                            <rect key="frame" x="18" y="86" width="90" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="bottomImageViewTextField" destination="b22-Wi-5Ur" id="V6e-Oe-b2P"/>
                                     <outlet property="bottomTextLabel" destination="tbc-kI-XbE" id="rAX-Xy-m5w"/>
                                     <outlet property="memeImageView" destination="6NN-6D-B0S" id="iDC-IY-VOT"/>
-                                    <outlet property="topImageViewTextField" destination="qXh-cg-AI1" id="8Gg-Ge-aJr"/>
                                     <outlet property="topTextLabel" destination="N42-Th-r3N" id="mLj-GF-Mew"/>
                                 </connections>
                             </tableViewCell>
@@ -326,23 +314,11 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U05-Ge-xiX">
                                             <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                         </imageView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-8z-Ujt" userLabel="Image View Top Text Field">
-                                            <rect key="frame" x="16" y="18" width="90" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Bgs-E6-TQk" userLabel="Image View Bottom Text Field">
-                                            <rect key="frame" x="16" y="85" width="90" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="bottomImageViewTextField" destination="Bgs-E6-TQk" id="8Tn-ke-q3z"/>
                                     <outlet property="memeImageView" destination="U05-Ge-xiX" id="2TO-Qk-x6e"/>
-                                    <outlet property="topImageViewTextField" destination="kCJ-8z-Ujt" id="wB7-EL-8iO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -389,7 +365,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BIq-7e-apr"/>
-        <segue reference="25B-Vo-Cm9"/>
+        <segue reference="9LD-9U-KAh"/>
+        <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>
