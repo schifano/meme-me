@@ -32,7 +32,7 @@ class SentMemesDetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Edit"{
             var navigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
-            presentViewController(navigationController, animated: true, completion: nil)
+            addChildViewController(navigationController)
             let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             // Update the editor meme to be re-displayed
             applicationDelegate.editorMeme = meme

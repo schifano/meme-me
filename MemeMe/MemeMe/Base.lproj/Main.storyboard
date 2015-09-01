@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
                                 <rect key="frame" x="-1" y="64" width="417" height="627"/>
                                 <color key="backgroundColor" white="0.19047251918859645" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -59,7 +59,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="B7P-Ru-2t4">
                                 <rect key="frame" x="36" y="149" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BX9-8M-lLi"/>
@@ -94,7 +94,7 @@
                                 <action selector="shareMemedImage:" destination="vXZ-lx-hvc" id="c31-yz-Gnp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="t4y-mP-ROC">
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="t4y-mP-ROC">
                             <connections>
                                 <segue destination="DEf-AE-aB3" kind="unwind" identifier="unwindEdit" unwindAction="cancelImagePicker:" id="rB9-hj-itr"/>
                             </connections>
@@ -149,7 +149,7 @@
                     <connections>
                         <segue destination="7hF-43-d01" kind="relationship" relationship="viewControllers" id="3v3-Ci-yMA"/>
                         <segue destination="xvr-Oe-Cq8" kind="relationship" relationship="viewControllers" id="9BP-Py-9Wg"/>
-                        <segue destination="EDT-PT-npa" kind="presentation" identifier="showMemeEditor" id="2kI-XZ-3rX"/>
+                        <segue destination="EDT-PT-npa" kind="show" identifier="showMemeEditor" id="2kI-XZ-3rX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3b0-uR-Rqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,7 +239,7 @@
                     <navigationItem key="navigationItem" id="6fM-E4-LRy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mCR-wH-Yu1">
                             <connections>
-                                <segue destination="EDT-PT-npa" kind="presentation" identifier="editMeme" id="9LD-9U-KAh"/>
+                                <segue destination="EDT-PT-npa" kind="show" identifier="editMeme" id="9LD-9U-KAh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -276,7 +276,7 @@
                     <navigationItem key="navigationItem" id="jg3-el-lWT">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BAb-En-CdK">
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="presentation" identifier="Edit" id="BIq-7e-apr"/>
+                                <segue destination="vXZ-lx-hvc" kind="show" identifier="Edit" id="BIq-7e-apr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -330,7 +330,7 @@
                     <navigationItem key="navigationItem" id="7t0-SP-DYR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nxg-cv-qra">
                             <connections>
-                                <segue destination="EDT-PT-npa" kind="presentation" id="25B-Vo-Cm9"/>
+                                <segue destination="EDT-PT-npa" kind="show" id="25B-Vo-Cm9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -366,6 +366,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BIq-7e-apr"/>
-        <segue reference="9LD-9U-KAh"/>
+        <segue reference="25B-Vo-Cm9"/>
     </inferredMetricsTieBreakers>
 </document>
