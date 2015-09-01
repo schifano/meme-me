@@ -81,9 +81,6 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
         // Set the image
         cell.memeImageView.image = meme.originalImage
-    
-        cell.topImageViewTextField.enabled = false
-        cell.bottomImageViewTextField.enabled = false
         cell.topImageViewTextField.text = meme.topText
         cell.bottomImageViewTextField.text = meme.bottomText
         
