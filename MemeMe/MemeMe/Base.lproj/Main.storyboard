@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="3760" y="1724"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Meme Navigation View Controller-->
         <scene sceneID="zuc-7v-q6L">
             <objects>
-                <navigationController storyboardIdentifier="MemeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="EDT-PT-npa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="EDT-PT-npa" customClass="MemeNavigationViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="76C-jM-No0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -342,10 +342,10 @@
             </objects>
             <point key="canvasLocation" x="1577" y="1333"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Meme Detail Navigation View Controller-->
         <scene sceneID="1Ot-Fm-ICU">
             <objects>
-                <navigationController storyboardIdentifier="MemeDetailNavigationViewController" id="H0r-xs-epd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeDetailNavigationViewController" id="H0r-xs-epd" customClass="MemeDetailNavigationViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsI-Np-oEA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -365,7 +365,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BIq-7e-apr"/>
         <segue reference="25B-Vo-Cm9"/>
+        <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>

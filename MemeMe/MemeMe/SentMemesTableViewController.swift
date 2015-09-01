@@ -15,9 +15,13 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     var memes: [Meme]!
     var memeViewController = MemeViewController()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
+
         tableView.rowHeight = 125
         
         // Access the shared model
@@ -34,6 +38,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         :param: sender The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
+        
     }
     
     // MARK: Table View Data Source
@@ -85,7 +90,6 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         :param: indexPath The specified row that is now selected
     */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
         detailController.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailController, animated: true)

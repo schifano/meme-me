@@ -51,6 +51,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         :param: sender The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
+        
     }
     
     // MARK: Collection View Data Source
@@ -86,7 +87,6 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
         let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
         detailController.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailController, animated: true)

@@ -26,7 +26,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     var meme: Meme!
-    
+
     // MARK: View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -376,5 +376,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func showBottomToolbar() {
         bottomToolbar.hidden = false
+    }
+    
+    func hideBottomTabBar() {
+        println("hide") // TEST
+        tabBarController?.tabBar.hidden = true
+    }
+    
+    func showBottomTabBar() {
+        println("show") // TEST
+        tabBarController?.tabBar.hidden = false
     }
 }

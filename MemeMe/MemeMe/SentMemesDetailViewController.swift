@@ -17,10 +17,14 @@ class SentMemesDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         if let image = meme.memedImage {
             detailImageView.image = image
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     /**
@@ -30,7 +34,7 @@ class SentMemesDetailViewController: UIViewController {
         :param: sender The object that initiated the segue.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Edit"{
+        if segue.identifier == "Edit" {
             var navigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
             addChildViewController(navigationController)
             let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
