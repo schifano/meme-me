@@ -21,6 +21,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         showBottomTabBar()
         navigationController?.tabBarController?.tabBar.hidden = false
         tableView.rowHeight = 125
+//        tabBarController?.tabBar.frame.size.height = 45
         
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate

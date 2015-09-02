@@ -214,7 +214,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // Checks what the current orientation is before reloading view
             if UIDevice.currentDevice().orientation.isPortrait.boolValue {
                 // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-                topTextVerticalSpace.constant = rect.origin.y - 60.0
+                topTextVerticalSpace.constant = rect.origin.y
                 // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
             } else {
