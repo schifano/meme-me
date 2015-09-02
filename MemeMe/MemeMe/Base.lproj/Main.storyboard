@@ -17,12 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
-                                <rect key="frame" x="-1" y="64" width="417" height="627"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-8r-lYQ">
+                                <rect key="frame" x="-1" y="64" width="417" height="578"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="691" width="414" height="45"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-cg-Sfq" userLabel="Bottom Toolbar">
+                                <rect key="frame" x="0.0" y="642" width="414" height="45"/>
                                 <color key="backgroundColor" red="0.88393702649999994" green="0.87149573030000005" blue="0.82366507079999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="k9K-HB-SWe"/>
@@ -50,8 +50,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="njB-P3-RBI"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-LF-BUq">
-                                <rect key="frame" x="36" y="556" width="342" height="50"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-LF-BUq">
+                                <rect key="frame" x="36" y="507" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cXq-Cc-uqP"/>
                                 </constraints>
