@@ -15,13 +15,11 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     var memes: [Meme]!
     var memeViewController = MemeViewController()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        showBottomTabBar()
+        navigationController?.tabBarController?.tabBar.hidden = false
         tableView.rowHeight = 125
         
         // Access the shared model
@@ -31,7 +29,27 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showBottomTabBar()
+    }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideBottomTabBar()
+        navigationController?.tabBarController?.tabBar.hidden = true
+    }
+    
+    func hideBottomTabBar() {
+        navigationController?.tabBarController?.tabBar.hidden = true
+    }
+    
+    func showBottomTabBar() {
+        navigationController?.tabBarController?.tabBar.hidden = false
+    }
+    
+    
     /**
         Dismisses the image picker view controller.
         

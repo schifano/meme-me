@@ -37,12 +37,31 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        showBottomTabBar()
         collectionView!.reloadData()
         
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showBottomTabBar()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        hideBottomTabBar()
+    }
+    
+    func hideBottomTabBar() {
+        navigationController?.tabBarController?.tabBar.hidden = true
+    }
+    
+    func showBottomTabBar() {
+        navigationController?.tabBarController?.tabBar.hidden = false
     }
     
     /**

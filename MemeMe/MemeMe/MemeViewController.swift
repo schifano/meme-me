@@ -358,6 +358,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        // Get CGRect of image in imageView
+        var imageRect: CGRect = calculateRectOfImage(imageView)
+        var imagePoint = CGPointMake(imageRect.origin.x, imageRect.origin.y)
+        var imagePoint2 = CGPointMake(-50, -100)
+        // Crop image
+        UIGraphicsBeginImageContext(imageRect.size)
+        memedImage.drawAtPoint(imagePoint2)
+        var croppedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        UIImageWriteToSavedPhotosAlbum(croppedImage,nil, nil, nil);
+        
+        
         // Show tool bar and nav bar
         showBottomToolbar()
         
@@ -379,12 +391,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func hideBottomTabBar() {
-        println("hide") // TEST
+        navigationController?.tabBarController?.tabBar.hidden = true
         tabBarController?.tabBar.hidden = true
     }
     
     func showBottomTabBar() {
-        println("show") // TEST
+        navigationController?.tabBarController?.tabBar.hidden = false
         tabBarController?.tabBar.hidden = false
     }
 }
