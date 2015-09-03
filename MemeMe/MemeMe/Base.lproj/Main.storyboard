@@ -265,8 +265,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-z6-q0D" userLabel="Detail Meme Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-z6-q0D" userLabel="Detail Meme Image View">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,7 +275,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Lkc-z6-q0D" secondAttribute="trailing" constant="-16" id="EPy-ob-5Fw"/>
                             <constraint firstAttribute="centerX" secondItem="Lkc-z6-q0D" secondAttribute="centerX" id="FtQ-a7-Jpb"/>
                             <constraint firstItem="2fm-fJ-8pj" firstAttribute="top" secondItem="Lkc-z6-q0D" secondAttribute="bottom" id="b7U-Ew-Uj5"/>
-                            <constraint firstItem="Lkc-z6-q0D" firstAttribute="top" secondItem="ME0-ih-fAT" secondAttribute="bottom" constant="-64" id="odL-Om-ifK"/>
+                            <constraint firstItem="Lkc-z6-q0D" firstAttribute="top" secondItem="ME0-ih-fAT" secondAttribute="bottom" id="odL-Om-ifK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jg3-el-lWT">
@@ -370,7 +370,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="BIq-7e-apr"/>
         <segue reference="2kI-XZ-3rX"/>
-        <segue reference="a3G-G0-XdG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -359,21 +359,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UIGraphicsEndImageContext()
         
         // Get CGRect of image in imageView
-        var imageRect: CGRect = calculateRectOfImage(imageView)
-        var imagePoint = CGPointMake(imageRect.origin.x, imageRect.origin.y)
-        var imagePoint2 = CGPointMake(-50, -100)
-        // Crop image
-        UIGraphicsBeginImageContext(imageRect.size)
-        memedImage.drawAtPoint(imagePoint2)
-        var croppedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext();
-        UIImageWriteToSavedPhotosAlbum(croppedImage,nil, nil, nil);
-        
-        
+        var cropRect: CGRect = calculateRectOfImage(imageView)
+        // Draw new image in current image context
+        var croppedImage: CGImage = CGImageCreateWithImageInRect(memedImage.CGImage, cropRect)
+        // Create new cropped UIImage
+        var croppedMemedImage: UIImage = UIImage(CGImage: croppedImage)!
+
         // Show tool bar and nav bar
         showBottomToolbar()
         
-        return memedImage
+        return croppedMemedImage
     }
     
     /**
