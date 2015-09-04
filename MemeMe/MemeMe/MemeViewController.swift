@@ -80,7 +80,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
-            adjustTextFieldConstraints(calculateRectOfImage(imageView))
+            adjustContraintsForOrientationChange()
             
             view.setNeedsDisplay()
             
@@ -174,7 +174,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
             
-            adjustTextFieldConstraints(calculateRectOfImage(imageView))
+            adjustContraintsForOrientationChange()
             
             // Show share button when image is selected
             shareButton.enabled = true
@@ -225,33 +225,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-        Adjusts text field constraints so that the text is displayed within the image.
-        
-        :param: rect The CGRect of the image.
+        Adjusts text field constraints depending on orientation so that the text is displayed within the image.
     */
-    func adjustTextFieldConstraints(rect: CGRect) {
-
-        orientationDidChange()
-//        println("####Adjust") // TEST
-//        // Checks what the current orientation is before reloading view
-//        if UIDevice.currentDevice().orientation.isPortrait.boolValue {
-//            println("IS PORTRAIT") // TEST
-//            
-//            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-//            topTextVerticalSpace.constant = rect.origin.y - 65
-//            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
-//            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-//            self.view.setNeedsUpdateConstraints()
-//        } else {
-//            println("IS LANDSCAPE") // TEST
-//            // Landscape orientation does not have offsets to account for - set constraints to 0.0
-//            topTextVerticalSpace.constant = 0.0
-//            bottomTextVerticalSpace.constant = 0.0
-//            self.view.setNeedsUpdateConstraints()
-//        }
-    }
-    
-    func orientationDidChange() {
+    func adjustContraintsForOrientationChange() {
         println("orientation will change") // TEST
         
         var orientation = UIDevice.currentDevice().orientation
@@ -291,20 +267,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                 self.view.setNeedsUpdateConstraints()
             default: break; }
         }
-        
-        view.setNeedsDisplay()
-//        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
-//                topTextVerticalSpace.constant = 0.0
-//                bottomTextVerticalSpace.constant = 0.0
-//            return "landscape"
-//        } else {
-//            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-//            topTextVerticalSpace.constant = rect.origin.y - 60.0
-//            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
-//            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-//
-//            return "portrait"
-//        }
     }
     
     // MARK: Notification Center Methods
@@ -366,7 +328,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func subscribeToRotationNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "adjustContraintsForOrientationChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     func unsubscribeToRotationNotifications() {
