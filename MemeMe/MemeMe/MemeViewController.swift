@@ -26,10 +26,19 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     var meme: Meme!
+    var firstLoad: Bool = true
+    var initialViewRect: CGRect!
 
     // MARK: View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Garbage
+        if firstLoad {
+            initialViewRect = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, imageView.frame.size.width, imageView.frame.size.height)
+            firstLoad = false
+        }
+        
         
         // Disable share button until an image is picked
         shareButton.enabled = false
@@ -54,16 +63,26 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
         if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
+            println("EDIT MODE") // TEST
             meme = applicationDelegate.editorMeme
             // Redraw meme
-            imageView.image = meme.originalImage
+//            imageView.frame.width = 377
+//            imageView.frame.height = 558
             // Apparently order of calling content mode matters
+            view.contentMode = .ScaleToFill
             imageView.contentMode = .ScaleAspectFit
+            
+            // But why do I have to reset this to make these imageViews match? Why does it change?
+//            var testRect: CGRect = CGRectMake(-1, 64, 377, 558)
+//            imageView.frame = initialViewRect
+            imageView.image = meme.originalImage
 
-            adjustTextFieldConstraints(calculateRectOfImage(imageView))
+            
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
-            self.view.setNeedsUpdateConstraints()
+            adjustTextFieldConstraints(calculateRectOfImage(imageView))
+            
+            view.setNeedsDisplay()
             
             shareButton.enabled = true
             applicationDelegate.editMode = false
@@ -212,27 +231,28 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func adjustTextFieldConstraints(rect: CGRect) {
 
-        println("####Adjust") // TEST
-        // Checks what the current orientation is before reloading view
-        if UIDevice.currentDevice().orientation.isPortrait.boolValue {
-            println("IS PORTRAIT") // TEST
-            
-            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
-            topTextVerticalSpace.constant = rect.origin.y - 65
-            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
-            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-            self.view.setNeedsUpdateConstraints()
-        } else {
-            println("IS LANDSCAPE") // TEST
-            // Landscape orientation does not have offsets to account for - set constraints to 0.0
-            topTextVerticalSpace.constant = 0.0
-            bottomTextVerticalSpace.constant = 0.0
-            self.view.setNeedsUpdateConstraints()
-        }
+        orientationDidChange()
+//        println("####Adjust") // TEST
+//        // Checks what the current orientation is before reloading view
+//        if UIDevice.currentDevice().orientation.isPortrait.boolValue {
+//            println("IS PORTRAIT") // TEST
+//            
+//            // Constraint of top text field should begin at the image rect origin y and account for textfield height (50pt) and padding (10pt) between top text and top of image
+//            topTextVerticalSpace.constant = rect.origin.y - 65
+//            // Constraint of bottom text field is the value of the offsets (or gray gaps). Value is negative because the constraint is from the text field to the end of the image view.
+//            bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
+//            self.view.setNeedsUpdateConstraints()
+//        } else {
+//            println("IS LANDSCAPE") // TEST
+//            // Landscape orientation does not have offsets to account for - set constraints to 0.0
+//            topTextVerticalSpace.constant = 0.0
+//            bottomTextVerticalSpace.constant = 0.0
+//            self.view.setNeedsUpdateConstraints()
+//        }
     }
     
     func orientationDidChange() {
-        println("rotation will change") // TEST
+        println("orientation will change") // TEST
         
         var orientation = UIDevice.currentDevice().orientation
         
@@ -242,20 +262,29 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             switch (orientation) {
             case .Portrait:
                 println("Portrait") // TEST
+                println("Image View: \(imageView)") // TEST
+                println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
+                println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
+                println("Portrait bottomTextVerticalSpace: \(-(imageView.frame.size.height - rect.size.height) / 2)") // TEST
+                
+                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = rect.origin.y - 65
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
                 self.view.setNeedsUpdateConstraints()
             case .PortraitUpsideDown:
+                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = rect.origin.y - 65
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
                 self.view.setNeedsUpdateConstraints()
                 println("Portrait Upside Down") // TEST
             case .LandscapeLeft:
+                view.setNeedsDisplay()
                 println("Landscape Left") // TEST
                 topTextVerticalSpace.constant = 0.0
                 bottomTextVerticalSpace.constant = 0.0
                                 self.view.setNeedsUpdateConstraints()
             case .LandscapeRight:
+                view.setNeedsDisplay()
                 println("Landscape Right") // TEST
                 topTextVerticalSpace.constant = 0.0
                 bottomTextVerticalSpace.constant = 0.0
@@ -419,15 +448,5 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func showBottomToolbar() {
         bottomToolbar.hidden = false
-    }
-    
-    func hideBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = true
-        tabBarController?.tabBar.hidden = true
-    }
-    
-    func showBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = false
-        tabBarController?.tabBar.hidden = false
     }
 }
