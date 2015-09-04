@@ -10,17 +10,19 @@ import UIKit
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // MARK: Declared Variables
+    // Constraints
     @IBOutlet weak var topTextVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var bottomTextVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var centerVerticalSpace: NSLayoutConstraint!
-    
-    // MARK: Declared Variables
+    // Text Fields
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
+    // Bar items
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var imageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
     let memeTextFieldDelegate = MemeTextFieldDelegate()
@@ -66,9 +68,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             println("EDIT MODE") // TEST
             meme = applicationDelegate.editorMeme
             // Redraw meme
-//            imageView.frame.width = 377
-//            imageView.frame.height = 558
-            // Apparently order of calling content mode matters
             view.contentMode = .ScaleToFill
             imageView.contentMode = .ScaleAspectFit
             
@@ -327,10 +326,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    /**
+        Subscribes to rotation notifications.
+    */
     func subscribeToRotationNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "adjustContraintsForOrientationChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
+    /**
+        Unsubscribes to rotation notifications.
+    */
     func unsubscribeToRotationNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
