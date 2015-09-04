@@ -235,7 +235,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             var rect: CGRect = calculateRectOfImage(imageView)
             
             switch (orientation) {
-            case .Portrait:
+            case .Portrait, .PortraitUpsideDown:
                 println("Portrait") // TEST
                 println("Image View: \(imageView)") // TEST
                 println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
@@ -246,24 +246,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 topTextVerticalSpace.constant = rect.origin.y - 65
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
                 self.view.setNeedsUpdateConstraints()
-            case .PortraitUpsideDown:
-                view.setNeedsDisplay()
-                topTextVerticalSpace.constant = rect.origin.y - 65
-                bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-                self.view.setNeedsUpdateConstraints()
-                println("Portrait Upside Down") // TEST
-            case .LandscapeLeft:
+            case .LandscapeLeft, .LandscapeRight:
                 view.setNeedsDisplay()
                 println("Landscape Left") // TEST
                 topTextVerticalSpace.constant = 0.0
                 bottomTextVerticalSpace.constant = 0.0
-                                self.view.setNeedsUpdateConstraints()
-            case .LandscapeRight:
-                view.setNeedsDisplay()
-                println("Landscape Right") // TEST
-                topTextVerticalSpace.constant = 0.0
-                bottomTextVerticalSpace.constant = 0.0
-                                self.view.setNeedsUpdateConstraints()
+                view.setNeedsUpdateConstraints()
             default: break; }
         }
     }
