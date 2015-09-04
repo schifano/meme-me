@@ -11,12 +11,13 @@ import Foundation
 
 class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     // Create array of Meme objects
     var memes: [Meme]!
     var memeViewController = MemeViewController()
     
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    
+    // MARK: View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +55,14 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         hideBottomTabBar()
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
 
     /**

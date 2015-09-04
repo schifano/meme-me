@@ -11,14 +11,11 @@ import UIKit
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Declared Variables
-    // Constraints
     @IBOutlet weak var topTextVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var bottomTextVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var centerVerticalSpace: NSLayoutConstraint!
-    // Text Fields
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    // Bar items
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
@@ -28,8 +25,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     var meme: Meme!
-    var firstLoad: Bool = true
-    var initialViewRect: CGRect!
+    var firstLoad: Bool = true // TEST
+    var initialViewRect: CGRect! // TEST
 
     // MARK: View Lifecycle Methods
     override func viewDidLoad() {
@@ -40,7 +37,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             initialViewRect = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, imageView.frame.size.width, imageView.frame.size.height)
             firstLoad = false
         }
-        
         
         // Disable share button until an image is picked
         shareButton.enabled = false
@@ -76,7 +72,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //            imageView.frame = initialViewRect
             imageView.image = meme.originalImage
 
-            
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             adjustContraintsForOrientationChange()
@@ -92,6 +87,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications() // Unsubscribe to keyboard
         unsubscribeToRotationNotifications() // Unsubscribe to rotation
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /**
@@ -227,28 +230,24 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Adjusts text field constraints depending on orientation so that the text is displayed within the image.
     */
     func adjustContraintsForOrientationChange() {
-        println("orientation will change") // TEST
         
         var orientation = UIDevice.currentDevice().orientation
-        
         if imageView.image != nil {
             var rect: CGRect = calculateRectOfImage(imageView)
             
             switch (orientation) {
             case .Portrait, .PortraitUpsideDown:
-                println("Portrait") // TEST
                 println("Image View: \(imageView)") // TEST
                 println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
                 println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
                 println("Portrait bottomTextVerticalSpace: \(-(imageView.frame.size.height - rect.size.height) / 2)") // TEST
                 
-                view.setNeedsDisplay()
+//                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = rect.origin.y - 65
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-                self.view.setNeedsUpdateConstraints()
+                view.setNeedsUpdateConstraints()
             case .LandscapeLeft, .LandscapeRight:
-                view.setNeedsDisplay()
-                println("Landscape Left") // TEST
+//                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = 0.0
                 bottomTextVerticalSpace.constant = 0.0
                 view.setNeedsUpdateConstraints()

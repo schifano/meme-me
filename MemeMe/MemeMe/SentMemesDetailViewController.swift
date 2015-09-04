@@ -15,6 +15,7 @@ class SentMemesDetailViewController: UIViewController {
 
     var meme: Meme!
     
+    // MARK: View Lifecycle Methods
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -28,6 +29,10 @@ class SentMemesDetailViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    override func supportedInterfaceOrientations() -> Int{
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /**

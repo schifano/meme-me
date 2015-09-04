@@ -15,6 +15,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     var memes: [Meme]!
     var memeViewController = MemeViewController()
     
+    // MARK: View Lifecycle Methods
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showBottomTabBar()
@@ -36,6 +37,14 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         hideBottomTabBar()
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /**
