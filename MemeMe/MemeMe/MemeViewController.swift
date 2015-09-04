@@ -43,7 +43,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         
         // If a camera is not available, disable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
@@ -63,6 +63,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             adjustTextFieldConstraints(calculateRectOfImage(imageView))
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
+            self.view.setNeedsUpdateConstraints()
             
             shareButton.enabled = true
             applicationDelegate.editMode = false
@@ -260,7 +261,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 bottomTextVerticalSpace.constant = 0.0
                                 self.view.setNeedsUpdateConstraints()
             default: break; }
-
         }
         
         view.setNeedsDisplay()
