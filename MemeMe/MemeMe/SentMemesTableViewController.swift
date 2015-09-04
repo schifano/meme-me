@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class SentMemesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
-    
+
     // Create array of Meme objects
     var memes: [Meme]!
     var memeViewController = MemeViewController()
@@ -19,9 +19,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         super.viewWillAppear(animated)
 
         showBottomTabBar()
-        navigationController?.tabBarController?.tabBar.hidden = false
         tableView.rowHeight = 125
-//        tabBarController?.tabBar.frame.size.height = 45
         
         // Access the shared model
         let object = UIApplication.sharedApplication().delegate
@@ -39,25 +37,28 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         hideBottomTabBar()
-        navigationController?.tabBarController?.tabBar.hidden = true
     }
     
+    /**
+        Hide the tab bar associated with the current navigation controller.
+    */
     func hideBottomTabBar() {
         navigationController?.tabBarController?.tabBar.hidden = true
     }
     
+    /**
+        Show the tab bar associated with the current navigation controller.
+    */
     func showBottomTabBar() {
         navigationController?.tabBarController?.tabBar.hidden = false
     }
-    
-    
+
     /**
         Dismisses the image picker view controller.
         
         :param: sender The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
-        
     }
     
     // MARK: Table View Data Source
