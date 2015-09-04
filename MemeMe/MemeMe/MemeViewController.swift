@@ -73,7 +73,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications() // Unsubscribe to keyboard
-        unsubscribeToKeyboardNotifications() // Unsubscribe to rotation
+        unsubscribeToRotationNotifications() // Unsubscribe to rotation
     }
     
     /**
