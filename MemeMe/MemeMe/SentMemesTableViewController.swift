@@ -17,7 +17,6 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         showBottomTabBar()
         tableView.rowHeight = 125
         

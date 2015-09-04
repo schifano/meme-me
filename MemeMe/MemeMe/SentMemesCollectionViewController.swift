@@ -36,8 +36,8 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         showBottomTabBar()
+        
         collectionView!.reloadData()
         
         // Access the shared model
@@ -55,11 +55,17 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         super.viewDidDisappear(animated)
         hideBottomTabBar()
     }
-    
+
+    /**
+        Hide the tab bar associated with the current navigation controller.
+    */
     func hideBottomTabBar() {
         navigationController?.tabBarController?.tabBar.hidden = true
     }
-    
+
+    /**
+        Show the tab bar associated with the current navigation controller.
+    */
     func showBottomTabBar() {
         navigationController?.tabBarController?.tabBar.hidden = false
     }
@@ -70,7 +76,6 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         :param: sender The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
-        
     }
     
     // MARK: Collection View Data Source
