@@ -26,15 +26,7 @@ class SentMemesDetailViewController: UIViewController {
             detailImageView.image = image
         }
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    override func supportedInterfaceOrientations() -> Int{
-        return Int(UIInterfaceOrientationMask.All.rawValue)
-    }
-    
+        
     /**
         If the segue identifier "Edit" is passed, the method will segue to MemeNavigationViewController so the user can edit the selected meme.
     
@@ -43,8 +35,13 @@ class SentMemesDetailViewController: UIViewController {
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Edit" {
-            var navigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
-            addChildViewController(navigationController)
+
+            var memeTabBarController = storyboard?.instantiateViewControllerWithIdentifier("MemeTabBarController") as! UITabBarController
+            self.navigationController!.popToViewController(memeTabBarController, animated: false)
+
+            var editNavigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
+
+            addChildViewController(editNavigationController)
             let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             // Update the editor meme to be re-displayed
             applicationDelegate.editorMeme = meme

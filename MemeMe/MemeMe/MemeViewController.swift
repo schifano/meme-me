@@ -64,19 +64,29 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             println("EDIT MODE") // TEST
             meme = applicationDelegate.editorMeme
             // Redraw meme
+            
+            view.setNeedsLayout()
+            imageView.setNeedsLayout()
+            
             view.contentMode = .ScaleToFill
+//            view.autoresizingMask = UIViewAutoresizing.None
+//            imageView.autoresizingMask = UIViewAutoresizing.None
+            
             imageView.contentMode = .ScaleAspectFit
             
             // But why do I have to reset this to make these imageViews match? Why does it change?
 //            var testRect: CGRect = CGRectMake(-1, 64, 377, 558)
 //            imageView.frame = initialViewRect
             imageView.image = meme.originalImage
-
+            
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
+            
+            transformIntoMemeText(topTextField, bottomText: bottomTextField)
             adjustContraintsForOrientationChange()
             
-            view.setNeedsDisplay()
+            
+            imageView.setNeedsDisplay()
             
             shareButton.enabled = true
             applicationDelegate.editMode = false
@@ -87,14 +97,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications() // Unsubscribe to keyboard
         unsubscribeToRotationNotifications() // Unsubscribe to rotation
-    }
-    
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /**
@@ -237,6 +239,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             switch (orientation) {
             case .Portrait, .PortraitUpsideDown:
+//                println("View: \(view)") // TEST
                 println("Image View: \(imageView)") // TEST
                 println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
                 println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
@@ -245,12 +248,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = rect.origin.y - 65
                 bottomTextVerticalSpace.constant = -(imageView.frame.size.height - rect.size.height) / 2
-                view.setNeedsUpdateConstraints()
+                imageView.setNeedsUpdateConstraints()
             case .LandscapeLeft, .LandscapeRight:
 //                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = 0.0
                 bottomTextVerticalSpace.constant = 0.0
-                view.setNeedsUpdateConstraints()
+                imageView.setNeedsUpdateConstraints()
             default: break; }
         }
     }

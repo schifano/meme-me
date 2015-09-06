@@ -38,15 +38,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         super.viewWillDisappear(animated)
         hideBottomTabBar()
     }
-    
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
-    }
-    
+
     /**
         Hide the tab bar associated with the current navigation controller.
     */
