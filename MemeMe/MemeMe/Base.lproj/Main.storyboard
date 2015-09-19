@@ -116,10 +116,10 @@
             </objects>
             <point key="canvasLocation" x="3760" y="1724"/>
         </scene>
-        <!--Meme Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="zuc-7v-q6L">
             <objects>
-                <navigationController storyboardIdentifier="MemeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="EDT-PT-npa" customClass="MemeNavigationViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="EDT-PT-npa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="76C-jM-No0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="440" y="1724"/>
         </scene>
-        <!--Meme Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Qli-xB-YF4">
             <objects>
-                <navigationController id="xvr-Oe-Cq8" customClass="MemeNavigationViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="xvr-Oe-Cq8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="collection" id="FlJ-ze-kiA">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="1045" y="1333"/>
         </scene>
-        <!--Meme Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="w3p-F0-YJB">
             <objects>
-                <navigationController id="7hF-43-d01" customClass="MemeNavigationViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="7hF-43-d01" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="table" id="2cz-wr-hjm">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
@@ -346,10 +346,10 @@
             </objects>
             <point key="canvasLocation" x="1577" y="1333"/>
         </scene>
-        <!--Meme Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="1Ot-Fm-ICU">
             <objects>
-                <navigationController storyboardIdentifier="MemeDetailNavigationViewController" id="H0r-xs-epd" customClass="MemeNavigationViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeDetailNavigationViewController" id="H0r-xs-epd" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsI-Np-oEA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
