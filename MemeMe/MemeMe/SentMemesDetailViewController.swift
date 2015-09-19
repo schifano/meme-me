@@ -35,9 +35,9 @@ class SentMemesDetailViewController: UIViewController {
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Edit" {
-
-            var memeTabBarController = storyboard?.instantiateViewControllerWithIdentifier("MemeTabBarController") as! UITabBarController
-            self.navigationController!.popToViewController(memeTabBarController, animated: false)
+//
+//            var memeTabBarController = storyboard?.instantiateViewControllerWithIdentifier("MemeTabBarController") as! UITabBarController
+//            self.navigationController!.popToViewController(memeTabBarController, animated: false)
 
             var editNavigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
 
