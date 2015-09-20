@@ -61,7 +61,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
         if (applicationDelegate.editMode != nil && applicationDelegate.editMode == true) {
-            println("EDIT MODE") // TEST
+//            println("EDIT MODE") // TEST
             meme = applicationDelegate.editorMeme
             // Redraw meme
             
@@ -240,10 +240,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             switch (orientation) {
             case .Portrait, .PortraitUpsideDown:
 //                println("View: \(view)") // TEST
-                println("Image View: \(imageView)") // TEST
-                println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
-                println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
-                println("Portrait bottomTextVerticalSpace: \(-(imageView.frame.size.height - rect.size.height) / 2)") // TEST
+//                println("Image View: \(imageView)") // TEST
+//                println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
+//                println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
+//                println("Portrait bottomTextVerticalSpace: \(-(imageView.frame.size.height - rect.size.height) / 2)") // TEST
                 
 //                view.setNeedsDisplay()
                 topTextVerticalSpace.constant = rect.origin.y - 65
