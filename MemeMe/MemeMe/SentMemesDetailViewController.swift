@@ -19,7 +19,6 @@ class SentMemesDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
         navigationController?.tabBarController?.tabBar.hidden = true
         
         if let image = meme.memedImage {
@@ -35,9 +34,6 @@ class SentMemesDetailViewController: UIViewController {
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Edit" {
-//
-//            var memeTabBarController = storyboard?.instantiateViewControllerWithIdentifier("MemeTabBarController") as! UITabBarController
-//            self.navigationController!.popToViewController(memeTabBarController, animated: false)
 
             var editNavigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
 
