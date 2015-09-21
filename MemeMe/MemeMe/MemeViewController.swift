@@ -239,7 +239,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             switch (orientation) {
             case .Portrait, .PortraitUpsideDown:
-//                println("View: \(view)") // TEST
 //                println("Image View: \(imageView)") // TEST
 //                println("Portrait rect.origin.y: \(rect.origin.y)") // TEST
 //                println("Portrait topTextVerticalSpace: \(rect.origin.y - 65)") // TEST
