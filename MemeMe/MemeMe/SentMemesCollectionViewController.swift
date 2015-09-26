@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
+class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
@@ -74,7 +74,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     /**
         Dismisses the image picker view controller.
         
-        :param: sender The Cancel button on the nav bar
+        - parameter sender: The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
     }
@@ -85,9 +85,9 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     /**
         Asks the data source for the number of items in the specified section. (required)
     
-        :param: collectionView An object representing the collection view requesting this information.
-        :param: section An index number identifying a section in collectionView.
-        :returns: memes.count The number of rows (memes) in section
+        - parameter collectionView: An object representing the collection view requesting this information.
+        - parameter section: An index number identifying a section in collectionView.
+        - returns: memes.count The number of rows (memes) in section
     */
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
@@ -96,9 +96,9 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     /**
         Asks the data source for the cell that corresponds to the specified item in the collection view. (required)
     
-        :param: collectionView An object representing the collection view requesting this information.
-        :param: indexPath The index path that specifies the location of the item.
-        :returns: cell A configured cell object.
+        - parameter collectionView: An object representing the collection view requesting this information.
+        - parameter indexPath: The index path that specifies the location of the item.
+        - returns: cell A configured cell object.
     */
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         

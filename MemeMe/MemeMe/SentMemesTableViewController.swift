@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SentMemesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class SentMemesTableViewController: UITableViewController {
 
     // Create array of Meme objects
     var memes: [Meme]!
@@ -56,7 +56,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     /**
         Dismisses the image picker view controller.
         
-        :param: sender The Cancel button on the nav bar
+        - parameter sender: The Cancel button on the nav bar
     */
     @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
     }
@@ -74,9 +74,9 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     /**
         Tells the data source to return the number of rows in a given section of a table view. (required)
     
-        :param: tableView The table-view object requesting this information.
-        :param: section An index number identifying a section in tableView.
-        :returns: memes.count The number of rows in section.
+        - parameter tableView: The table-view object requesting this information.
+        - parameter section: An index number identifying a section in tableView.
+        - returns: memes.count The number of rows in section.
     */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -85,9 +85,9 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     /**
         Asks the data source for a cell to insert in a particular location of the table view. (required)
     
-        :param: tableView A table-view object requesting the cell.
-        :param: indexPath An index path locating a row in tableView.
-        :returns: cell An object inheriting from custom MemeTableViewCell that the table view can use for the specified row.
+        - parameter tableView: A table-view object requesting the cell.
+        - parameter indexPath: An index path locating a row in tableView.
+        - returns: cell An object inheriting from custom MemeTableViewCell that the table view can use for the specified row.
     */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -106,8 +106,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         Tells the delegate that the specified row is now selected.
         Shows the selected meme's detail view.
     
-        :param: tableView The current tableView
-        :param: indexPath The specified row that is now selected
+        - parameter tableView: The current tableView
+        - parameter indexPath: The specified row that is now selected
     */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController

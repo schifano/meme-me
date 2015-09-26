@@ -29,13 +29,13 @@ class SentMemesDetailViewController: UIViewController {
     /**
         If the segue identifier "Edit" is passed, the method will segue to MemeNavigationViewController so the user can edit the selected meme.
     
-        :param: segue The segue object containing information about the view controllers involved in the segue.
-        :param: sender The object that initiated the segue.
+        - parameter segue: The segue object containing information about the view controllers involved in the segue.
+        - parameter sender: The object that initiated the segue.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Edit" {
 
-            var editNavigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
+            let editNavigationController = storyboard?.instantiateViewControllerWithIdentifier("MemeNavigationViewController") as! UINavigationController
 
             addChildViewController(editNavigationController)
             let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)

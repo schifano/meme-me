@@ -102,9 +102,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Applies custom text attributes that imitates the common meme font "Impact" for editor and table cells. Why also the table cells? The Udacity example app displays textfields with these attributes on the table cell previews.
     
-        :param: topText The text of the top text field.
-        :param: bottomText The text of the bottom text field.
-        :param: restorationID The restorationIdentifier associated with the calling view controller.
+        - parameter topText: The text of the top text field.
+        - parameter bottomText: The text of the bottom text field.
+        - parameter restorationID: The restorationIdentifier associated with the calling view controller.
     */
     func transformIntoMemeText(topText: UITextField, bottomText: UITextField) {
         // Create dictionary of default attributes
@@ -126,7 +126,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Allows user to select a photo from the PhotoLibrary when the Album button is tapped.
     
-        :param: sender The toolbar Album button
+        - parameter sender: The toolbar Album button
     */
     @IBAction func imagePickerAlbumButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -138,7 +138,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Allows user to take a photo using either a front or rear camera.
     
-        :param: sender The toolbar camera button
+        - parameter sender: The toolbar camera button
     */
     @IBAction func imagePickerCameraButtonTapped(sender: AnyObject) {
         imagePicker.allowsEditing = false
@@ -161,7 +161,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         } else {
             // Alert View deprecated in iOS 8, use Alert Controller
             let alert = UIAlertController(title: "No camera found", message: "Did not find a camera on your current device", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction!) in println("Foo")}))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alert: UIAlertAction) in print("Foo")}))
             presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -169,10 +169,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Sets the picked image to the image view.
     
-        :param: picker The current UIImagePickerController
-        :param: info The dictionary which takes a key and returns the original image picked
+        - parameter picker: The current UIImagePickerController
+        - parameter info: The dictionary which takes a key and returns the original image picked
     */
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject: AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // Set the picked image in the UIImageView
             imageView.contentMode = .ScaleAspectFit
@@ -189,7 +189,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Dismisses the current view controller.
     
-        :param: picker The current UIImagePickerController
+        - parameter picker: The current UIImagePickerController
     */
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -199,18 +199,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Calculates the location of the image within the image view.
         This is used to determine what location the top and bottom textfields should be set.
         
-        :param: imageView The current image view.
-        :returns: imageRect The CGRect of the current image in the image view.
+        - parameter imageView: The current image view.
+        - returns: imageRect The CGRect of the current image in the image view.
     */
     func calculateRectOfImage(imageView: UIImageView) -> CGRect {
-        var imageViewSize: CGSize = imageView.frame.size // Get size of image view
+        let imageViewSize: CGSize = imageView.frame.size // Get size of image view
         var imageSize: CGSize = imageView.image!.size // Get size of current image displayed
         
         // Calculate aspect with ScaleAspectFit
-        var scaleWidth: CGFloat = imageViewSize.width / imageSize.width
-        var scaleHeight: CGFloat = imageViewSize.height / imageSize.height
+        let scaleWidth: CGFloat = imageViewSize.width / imageSize.width
+        let scaleHeight: CGFloat = imageViewSize.height / imageSize.height
         // Find the min
-        var aspect: CGFloat = fmin(scaleWidth, scaleHeight)
+        let aspect: CGFloat = fmin(scaleWidth, scaleHeight)
         
         // CGSize
         imageSize.width *= aspect
@@ -224,7 +224,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageOriginX += imageView.frame.origin.x
         imageOriginY += imageView.frame.origin.y
         
-        var imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
+        let imageRect = CGRectMake(imageOriginX, imageOriginY, imageSize.width, imageSize.height)
         return imageRect
     }
     
@@ -233,9 +233,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     func adjustContraintsForOrientationChange() {
         
-        var orientation = UIDevice.currentDevice().orientation
+        let orientation = UIDevice.currentDevice().orientation
         if imageView.image != nil {
-            var rect: CGRect = calculateRectOfImage(imageView)
+            let rect: CGRect = calculateRectOfImage(imageView)
             
             switch (orientation) {
             case .Portrait, .PortraitUpsideDown:
@@ -264,7 +264,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         the height of the keyboard. This ensures that they keyboard will not cover 
         the current text field.
     
-        :param: notification The NSNotification
+        - parameter notification: The NSNotification
     */
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
@@ -278,7 +278,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         the height of the keyboard. This ensures that the view does not remain
         displaced on the screen when the keyboard hides.
     
-        :param: notification The NSNotification
+        - parameter notification: The NSNotification
     */
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
@@ -289,7 +289,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Returns the keyboard height.
     
-        :param: notification The NSNotification
+        - parameter notification: The NSNotification
     */
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
@@ -336,14 +336,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     */
     @IBAction func shareMemedImage(sender: AnyObject) {
         // Generate meme image
-        var memedImage = generateMemedImage()
+        let memedImage = generateMemedImage()
         // Define instance of Activity View Controller
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         // Present View Controller
         presentViewController(activityController, animated: true, completion: nil)
         
         activityController.completionWithItemsHandler = { activity, success, items, error in
-            println("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+            print("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
             // Save the meme
             self.saveMemedImage()
             // Dismiss View Controller - if you place this outside the handler, the activityController will dismiss too early
@@ -355,9 +355,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Save a generated meme object.
     */
     func saveMemedImage() {
-        var memedImage = generateMemedImage()
+        let memedImage = generateMemedImage()
         // Create meme
-        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
         
         // Add meme to the meme array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate
@@ -368,7 +368,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /**
         Generate a meme object with the top text, bottom text, selected image.
     
-        :returns: memedImage The final meme image designed by the user.
+        - returns: memedImage The final meme image designed by the user.
     */
     func generateMemedImage() -> UIImage {
         // Hide tool bar and nav bar
@@ -380,11 +380,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         UIGraphicsEndImageContext()
         
         // Get CGRect of image in imageView
-        var cropRect: CGRect = calculateRectOfImage(imageView)
+        let cropRect: CGRect = calculateRectOfImage(imageView)
         // Draw new image in current image context
-        var croppedImage: CGImage = CGImageCreateWithImageInRect(memedImage.CGImage, cropRect)
+        let croppedImage: CGImage = CGImageCreateWithImageInRect(memedImage.CGImage, cropRect)!
         // Create new cropped UIImage
-        var croppedMemedImage: UIImage = UIImage(CGImage: croppedImage)!
+        let croppedMemedImage: UIImage = UIImage(CGImage: croppedImage)
 
         // Show tool bar and nav bar
         showBottomToolbar()
