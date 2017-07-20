@@ -16,25 +16,25 @@ class SentMemesTableViewController: UITableViewController {
     var memeViewController = MemeViewController()
     
     // MARK: View Lifecycle Methods
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showBottomTabBar()
         tableView.rowHeight = 125
         
         // Access the shared model
-        let object = UIApplication.sharedApplication().delegate
+        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         
         tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showBottomTabBar()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         hideBottomTabBar()
     }
@@ -43,14 +43,14 @@ class SentMemesTableViewController: UITableViewController {
         Hide the tab bar associated with the current navigation controller.
     */
     func hideBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = true
+        navigationController?.tabBarController?.tabBar.isHidden = true
     }
     
     /**
         Show the tab bar associated with the current navigation controller.
     */
     func showBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = false
+        navigationController?.tabBarController?.tabBar.isHidden = false
     }
 
     /**
@@ -58,16 +58,16 @@ class SentMemesTableViewController: UITableViewController {
         
         - parameter sender: The Cancel button on the nav bar
     */
-    @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
+    @IBAction func cancelImagePicker(_ segue: UIStoryboardSegue) {
     }
     
     // MARK: Table View Data Source
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // Even when empty, still enables the delete button upon swipe
-        memes.removeAtIndex(indexPath.row)
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        applicationDelegate.memes.removeAtIndex(indexPath.row)
+        memes.remove(at: indexPath.row)
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        applicationDelegate.memes.remove(at: indexPath.row)
         tableView.reloadData()
     }
     
@@ -78,7 +78,7 @@ class SentMemesTableViewController: UITableViewController {
         - parameter section: An index number identifying a section in tableView.
         - returns: memes.count The number of rows in section.
     */
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
@@ -89,9 +89,9 @@ class SentMemesTableViewController: UITableViewController {
         - parameter indexPath: An index path locating a row in tableView.
         - returns: cell An object inheriting from custom MemeTableViewCell that the table view can use for the specified row.
     */
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell") as! MemeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         let meme = memes[indexPath.row]
         
         // Set top/bottom text and original image
@@ -109,8 +109,8 @@ class SentMemesTableViewController: UITableViewController {
         - parameter tableView: The current tableView
         - parameter indexPath: The specified row that is now selected
     */
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = storyboard?.instantiateViewController(withIdentifier: "SentMemesDetailViewController") as! SentMemesDetailViewController
         detailController.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailController, animated: true)
     }

@@ -11,7 +11,7 @@ import Foundation
 
 class MemeTabBar: UITabBar {
 
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
         sizeThatFits.height = 45
         

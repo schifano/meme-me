@@ -18,10 +18,10 @@ class MemeTextFieldDelegate: NSObject, UITextFieldDelegate {
         - parameter range: The range of the string which will be replaced by the current text
         - parameter string: The new string
     */
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Get the new text
-        var newText: NSString = textField.text!
-        newText = newText.stringByReplacingCharactersInRange(range, withString: string)
+        var newText: NSString = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
         
         return true
     }
@@ -29,14 +29,14 @@ class MemeTextFieldDelegate: NSObject, UITextFieldDelegate {
     /**
         Resets the text to a blank string once a user begins editing the textfield.
     */
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }
     
     /**
         Enables the keyboard to return and resigns the textfield from being the first responder.
     */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

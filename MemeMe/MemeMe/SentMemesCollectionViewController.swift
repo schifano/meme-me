@@ -26,33 +26,33 @@ class SentMemesCollectionViewController: UICollectionViewController {
         // Determine size of collection items for portrait and landscape
         // TODO: Put into helpher method?
         let dimension: CGFloat
-        if UIDevice.currentDevice().orientation.isPortrait {
+        if UIDevice.current.orientation.isPortrait {
             dimension = (view.frame.size.width - (2 * space)) / 3.0
         } else {
             dimension = (view.frame.size.height - (2 * space)) / 3.0
         }
         flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
         
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showBottomTabBar()
         
         collectionView!.reloadData()
         
         // Access the shared model
-        let object = UIApplication.sharedApplication().delegate
+        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showBottomTabBar()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         hideBottomTabBar()
     }
@@ -61,14 +61,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
         Hide the tab bar associated with the current navigation controller.
     */
     func hideBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = true
+        navigationController?.tabBarController?.tabBar.isHidden = true
     }
 
     /**
         Show the tab bar associated with the current navigation controller.
     */
     func showBottomTabBar() {
-        navigationController?.tabBarController?.tabBar.hidden = false
+        navigationController?.tabBarController?.tabBar.isHidden = false
     }
     
     /**
@@ -76,7 +76,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
         - parameter sender: The Cancel button on the nav bar
     */
-    @IBAction func cancelImagePicker(segue: UIStoryboardSegue) {
+    @IBAction func cancelImagePicker(_ segue: UIStoryboardSegue) {
     }
     
     // MARK: Collection View Data Source
@@ -89,7 +89,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         - parameter section: An index number identifying a section in collectionView.
         - returns: memes.count The number of rows (memes) in section
     */
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
     
@@ -100,9 +100,9 @@ class SentMemesCollectionViewController: UICollectionViewController {
         - parameter indexPath: The index path that specifies the location of the item.
         - returns: cell A configured cell object.
     */
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         
         // Set the image
@@ -111,8 +111,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailController = storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemesDetailViewController
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailController = storyboard?.instantiateViewController(withIdentifier: "SentMemesDetailViewController") as! SentMemesDetailViewController
         detailController.meme = memes[indexPath.row]
         navigationController?.pushViewController(detailController, animated: true)
     }
